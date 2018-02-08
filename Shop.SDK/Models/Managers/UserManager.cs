@@ -25,5 +25,23 @@ namespace Shop.SDK.Models.Managers
                 .AddOrder(Order.Asc("Email"))
                 .List<UserModel>();
         }
+
+        public static UserModel CreateUser(UserModel model)
+        {
+            var session = NHibernateHelper.Instance.GetCurrentSession();
+            using (var tr = session.BeginTransaction())
+            {
+                try
+                {
+                    model = session.Save(model) as UserModel;
+                    tr.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tr.Rollback();
+                }
+            }
+            return model;
+        }
     }
 }

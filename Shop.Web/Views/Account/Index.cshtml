@@ -1,8 +1,8 @@
-﻿@model Shop.Web.ViewModels.UserRegistrationViewModel
+﻿@model Shop.Web.ViewModels.UserAuthViewModel
 
 @{ Html.EnableClientValidation(); }
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+@using (Html.BeginForm("Index", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -16,10 +16,6 @@
         @Html.TextBoxFor(user => user.Password)
         @Html.ValidationMessageFor(user => user.Password)
     </div>
-    <div class="item">
-        @Html.LabelFor(user => user.PasswordRetype)
-        @Html.TextBoxFor(user => user.PasswordRetype)
-        @Html.ValidationMessageFor(user => user.PasswordRetype)
-    </div>
     <input type="submit" value="Зарегистрироваться" />
+    @Html.ActionLink("Зарегистрироваться", "Register", "Account")
 }

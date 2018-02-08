@@ -17,6 +17,17 @@ namespace Shop.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(UserAuthViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -26,6 +37,21 @@ namespace Shop.Web.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                var user = new UserModel()
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                    RegisterDate = DateTime.Now
+
+                };
+                user = UserManager.CreateUser(user);
+                if (user != null)
+                {
+                    return RedirectToAction("Index", "Account");
+                }
+            }
             return View();
         }
     }
