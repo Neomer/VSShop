@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.SDK.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,7 @@ namespace Shop.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            NHibernateHelper.Instance.OpenSession();
         }
     }
 }

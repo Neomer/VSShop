@@ -43,6 +43,7 @@ namespace Shop.SDK.Core
         {
             configuration.AddAssembly(typeof(ProductModel).Assembly);
             configuration.AddAssembly(typeof(ProductCategoryModel).Assembly);
+            configuration.AddAssembly(typeof(UserModel).Assembly);
         }
 
         public ISession OpenSession()
@@ -55,6 +56,16 @@ namespace Shop.SDK.Core
             {
                 throw new Exception("Фабрика сущностей не инициализирована!");
             }
+        }
+
+        public ISession GetCurrentSession()
+        {
+            var session = _sessionFactory.GetCurrentSession();
+            if (session == null)
+            {
+                session = OpenSession();
+            }
+            return session;
         }
 
     }
