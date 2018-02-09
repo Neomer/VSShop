@@ -9,6 +9,11 @@
     <bag name="Products" inverse="true">
       <key column="CategoryID"/>
       <one-to-many class="ProductModel"/>
-    </bag>  
+    </bag>
+    <many-to-one name="SubCategories" class="ProductCategoryModel" column="ParentID" cascade = "save-update"/>
+    <bag name="SubCategoriesBag" inverse="true">
+      <key column="ParentID"/>
+      <one-to-many class="ProductCategoryModel"/>
+    </bag>
   </class>
 </hibernate-mapping>
