@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +21,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.product-compact {
+    border-radius: 5px 5px;
+    min-height: 250px;
+    padding: 10px;
+    border: #fff 1px solid;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 10px;
+    min-width: 250px;
+}
+
+div.hoverable:hover {
+    border: #add9f2 1px solid;
+    cursor: pointer;
+}
+
+.product-compact .image-container {
+    width: 100%;
+    padding:10px;
+    max-height: 150px;
+    display: block;
+}
+
+.product-compact .image-container .product-image {
+    display: block;
+    margin: auto;
 }

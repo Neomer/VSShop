@@ -25,13 +25,20 @@
                 </ul>
             </div>
         </nav>
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-            </footer>
+        <div class="container-fluid body-content">
+            <div class="row">
+                <div class="col-md-2">
+                    @Html.Partial("Navigation")
+                </div>
+                <div class="col-md-10 container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
