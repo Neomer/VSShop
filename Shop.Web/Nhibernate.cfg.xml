@@ -13,6 +13,5 @@
     <property name="dialect">
       NHibernate.Dialect.MsSql2008Dialect
     </property>
-    <mapping assembly="Shop.SDK"/>
   </session-factory>
 </hibernate-configuration>

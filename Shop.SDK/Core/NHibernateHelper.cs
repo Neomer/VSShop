@@ -35,7 +35,7 @@ namespace Shop.SDK.Core
             configuration.Configure(configurePath);
             try
             {
-                //configuration.AddAssembly(typeof(UserModel).Assembly);
+                configuration.AddAssembly(typeof(UserModel).Assembly);
             }
             catch (MappingException ex)
             {
