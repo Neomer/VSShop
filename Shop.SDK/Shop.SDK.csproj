@@ -78,6 +78,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\Mapping\ConsignmentItemModel.hbm.xml" />
+    <Content Include="Models\Mapping\СonsignmentModel.hbm.xml" />
     <Content Include="packages.config" />
     <EmbeddedResource Include="Models\Mapping\ProductCategory.hbm.xml" />
     <None Include="Web.Debug.config">
@@ -94,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\NHibernateHelper.cs" />
+    <Compile Include="Models\ConsignmentItemModel.cs" />
     <Compile Include="Models\IIdentifyed.cs" />
     <Compile Include="Models\Managers\ProductCategoryManager.cs" />
     <Compile Include="Models\Managers\ProductManager.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ShopModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\СonsignmentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

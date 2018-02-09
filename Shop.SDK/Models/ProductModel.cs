@@ -10,5 +10,6 @@ namespace Shop.SDK.Models
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
         public virtual ProductCategoryModel Category { get; set; }
+        public virtual string Image { get; set; }
     }
 }

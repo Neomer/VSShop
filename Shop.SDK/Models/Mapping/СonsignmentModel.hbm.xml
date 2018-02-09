@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Shop.SDK" namespace="Shop.SDK.Models">
+  <class name="СonsignmentModel" table="Сonsignment" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <id name="ID" type="guid">
+      <generator class="guid"/>
+    </id>
+    <property name="CreationDate" not-null="true" />
+    <bag name="Items" inverse="true">
+      <key column="ConsignmentID"/>
+      <one-to-many class="ConsignmentItemModel"/>
+    </bag>
+  </class>
+</hibernate-mapping>

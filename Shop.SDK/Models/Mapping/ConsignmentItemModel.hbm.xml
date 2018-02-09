@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Shop.SDK" namespace="Shop.SDK.Models">
+  <class name="ConsignmentItemModel" table="ConsignmentItem" dynamic-update="true" >
+    <cache usage="read-write"/>
+    <composite-id>
+      <key-property name="Product" column="ProductID"></key-property>
+      <key-property name="Consignment" column="ConsignmentID"></key-property>
+    </composite-id>
+    <property name="Cost" not-null="true" />
+    <property name="Count" not-null="true" />
+    <many-to-one name="Consignment" class="СonsignmentModel" column="ConsignmentID" cascade="save-update"/>
+    <one-to-one name="Product" class="ProductModel" />
+  </class>
+</hibernate-mapping>

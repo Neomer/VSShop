@@ -6,8 +6,9 @@
       <generator class="guid"/>
     </id>
     <property name="Name" not-null="true" />
+    <property name="Image" />
     <property name="Description">
-      <column name="Description" sql-type="text"/>
+        <column name="Description" sql-type="text"/>
     </property>
     <many-to-one name="Category" class="ProductCategoryModel" column="CategoryID" cascade="save-update"/>
   </class>
