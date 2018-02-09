@@ -101,6 +101,8 @@
     <Compile Include="Models\Managers\UserManager.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\SaleItemModel.cs" />
+    <Compile Include="Models\SaleModel.cs" />
     <Compile Include="Models\ShopModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\СonsignmentModel.cs" />

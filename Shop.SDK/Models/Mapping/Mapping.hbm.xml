@@ -59,4 +59,29 @@
     <property name="Count" not-null="true" />
   </class>
 
+  <class name="SaleModel" table="Sale" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid" />
+    </id>
+    <property name="CreationDate" not-null="true" />
+    <property name="Address" not-null="true">
+      <column name="Address" sql-type="text"/>
+    </property>
+    <property name="PaymentType" type="int" not-null="true" />
+    <many-to-one name="Buyer" class="UserModel" column="UserID" cascade="save-update"/>
+    <bag name="Items" inverse="true">
+      <key column="SaleID"/>
+      <one-to-many class="SaleItemModel"/>
+    </bag>
+  </class>
+
+  <class name="SaleItemModel" table="SaleItems" dynamic-update="true" >
+    <composite-id>
+      <key-many-to-one name="Product" column="ProductID" class="ProductModel" />
+      <key-many-to-one name="Consignment" column="ConsignmentID" class="ConsignmentModel"  />
+      <key-many-to-one name="Sale" column="SaleID" class="SaleModel" />
+    </composite-id>
+    <property name="Count" not-null="true" />
+  </class>
+
 </hibernate-mapping>
