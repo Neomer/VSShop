@@ -25,6 +25,23 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Поставка
         /// </summary>
-        public virtual СonsignmentModel Consignment { get; set; }
+        public virtual ConsignmentModel Consignment { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            var t = obj as ConsignmentItemModel;
+            if (t == null)
+                return false;
+            if (Product == t.Product && Consignment == t.Consignment)
+                return true;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return (Product.Name + "|" + Consignment.ID.ToString()).GetHashCode();
+        }
     }
 }

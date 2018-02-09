@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" auto-import="true" assembly="Shop.SDK" namespace="Shop.SDK.Models">
+  <class name="UserModel" table="Users" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid"/>
+    </id>
+    <property name="Email" not-null="true" />
+    <property name="Password" not-null="true" />
+    <property name="BirthDate" />
+    <property name="RegisterDate" />
+    <property name="LastVisitDate" />
+  </class>
+  
+  <class name="ProductCategoryModel" table="ProductCategory" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid"/>
+    </id>
+    <property name="Name" not-null="true" />
+    <bag name="Products" inverse="true">
+      <key column="CategoryID"/>
+      <one-to-many class="ProductModel"/>
+    </bag>
+    <many-to-one name="Parent" class="ProductCategoryModel" column="ParentID" cascade = "save-update"/>
+    <bag name="SubCategories" inverse="true">
+      <key column="ParentID"/>
+      <one-to-many class="ProductCategoryModel"/>
+    </bag>
+  </class>
+  
+  <class name="ProductModel" table="Product" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid"/>
+    </id>
+    <property name="Name" not-null="true" />
+    <property name="Image" />
+    <property name="Description">
+      <column name="Description" sql-type="text"/>
+    </property>
+    <many-to-one name="Category" class="ProductCategoryModel" column="CategoryID" cascade="save-update"/>
+  </class>
+
+  <class name="ConsignmentModel" table="Consignment" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid" />
+    </id> 
+    <property name="CreationDate" not-null="true" />
+    <bag name="Items" inverse="true">
+      <key column="ConsignmentID"/>
+      <one-to-many class="ConsignmentItemModel"/>
+    </bag>
+  </class>
+
+  <class name="ConsignmentItemModel" table="ConsignmentItems" dynamic-update="true" >
+    <composite-id>
+      <key-many-to-one name="Product" column="ProductID" class="ProductModel" />
+      <key-many-to-one name="Consignment" column="ConsignmentID" class="ConsignmentModel"  />
+    </composite-id>
+    <property name="Cost" not-null="true" />
+    <property name="Count" not-null="true" />
+  </class>
+
+</hibernate-mapping>

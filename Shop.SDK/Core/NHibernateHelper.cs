@@ -35,11 +35,11 @@ namespace Shop.SDK.Core
             configuration.Configure(configurePath);
             try
             {
-                configuration.AddAssembly(typeof(UserModel).Assembly);
+                configuration.AddAssembly(typeof(ConsignmentItemModel).Assembly);
             }
             catch (MappingException ex)
             {
-
+                throw ex;
             }
             new SchemaUpdate(configuration).Execute(true, true);
             _sessionFactory = configuration.BuildSessionFactory();

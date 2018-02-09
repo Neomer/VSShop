@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Модель для представления партии
     /// </summary>
-    public class СonsignmentModel : IIdentifyed
+    public class ConsignmentModel : IIdentifyed
     {
         /// <summary>
         /// Дата поступления
@@ -17,6 +17,6 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Позиции партии
         /// </summary>
-        public IList<ConsignmentItemModel> Items { get; set; }        
+        public virtual IList<ConsignmentItemModel> Items { get; set; }        
     }
 }

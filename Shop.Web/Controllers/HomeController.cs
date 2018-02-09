@@ -59,6 +59,22 @@ namespace Shop.Web.Controllers
             };
             ProductManager.CreateProduct(product);
 
+            var cons = new ConsignmentModel()
+            {
+                ID = Guid.NewGuid(),
+                CreationDate = DateTime.Now
+            };
+            ConsignmentManager.CreateConsignment(cons);
+
+            var consItem = new ConsignmentItemModel()
+            {
+                Product = product,
+                Cost = 25.23,
+                Count = 34,
+                Consignment = cons
+            };
+            ConsignmentItemManager.CreateConsignment(consItem);
+
             return RedirectToAction("Index");
         }
     }
