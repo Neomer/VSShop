@@ -1,9 +1,8 @@
 ﻿@model Shop.Web.ViewModels.ProductDetailsViewModel
 
-<div class="col-md-2 product-compact hoverable">
+<div class="col-md-2 product-compact hoverable" onClick="window.location='@Url.Action("Index", "Product", new { id = Model.ID })'">
     <div class="image-container">
         <img class="product-image" src="~/Resources/Images/no-image-available-150.png" />
     </div>
     <h3>@Model.Name</h3>
-    @Html.ActionLink(Model.Name, "Index", "Product", new { id = Model.ID }, new { })
 </div>
