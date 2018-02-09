@@ -26,22 +26,22 @@ namespace Shop.SDK.Models.Managers
                 .List<UserModel>();
         }
 
-        public static UserModel CreateUser(UserModel model)
+        public static void CreateUser(UserModel model)
         {
             var session = NHibernateHelper.Instance.GetCurrentSession();
             using (var tr = session.BeginTransaction())
             {
                 try
                 {
-                    model = session.Save(model) as UserModel;
+                    session.Save(model);
                     tr.Commit();
                 }
                 catch (Exception ex)
                 {
                     tr.Rollback();
+                    throw ex;
                 }
             }
-            return model;
         }
     }
 }

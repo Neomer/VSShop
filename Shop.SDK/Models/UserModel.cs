@@ -21,7 +21,7 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Указанная дата рождения
         /// </summary>
-        public virtual DateTime BirthDate { get; set; }
+        public virtual DateTime? BirthDate { get; set; }
         /// <summary>
         /// Дата регистрации
         /// </summary>
@@ -29,6 +29,6 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Дата последнего визита
         /// </summary>
-        public virtual DateTime LastVisitDate { get; set; }
+        public virtual DateTime? LastVisitDate { get; set; }
     }
 }

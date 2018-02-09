@@ -2,6 +2,8 @@
 
 @{ Html.EnableClientValidation(); }
 
+<span>@ViewBag.ErrorMessage</span>
+
 @using (Html.BeginForm("Index", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -16,6 +18,6 @@
         @Html.TextBoxFor(user => user.Password)
         @Html.ValidationMessageFor(user => user.Password)
     </div>
-    <input type="submit" value="Зарегистрироваться" />
+    <input type="submit" value="Войти" />
     @Html.ActionLink("Зарегистрироваться", "Register", "Account")
 }
