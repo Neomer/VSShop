@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop.SDK.Models.Managers;
+using Shop.SDK.Models;
 
 namespace Shop.Web.Controllers
 {
@@ -11,6 +13,12 @@ namespace Shop.Web.Controllers
         // GET: Product
         public ActionResult Index(Guid id)
         {
+            var product = ProductManager.GetById(id);
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
     }

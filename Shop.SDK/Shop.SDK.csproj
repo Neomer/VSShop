@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Core\NHibernateHelper.cs" />
     <Compile Include="Models\IIdentifyed.cs" />
+    <Compile Include="Models\Managers\ProductCategoryManager.cs" />
     <Compile Include="Models\Managers\ProductManager.cs" />
     <Compile Include="Models\Managers\UserManager.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />

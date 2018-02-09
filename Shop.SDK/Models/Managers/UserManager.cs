@@ -29,6 +29,10 @@ namespace Shop.SDK.Models.Managers
         public static void CreateUser(UserModel model)
         {
             var session = NHibernateHelper.Instance.GetCurrentSession();
+            if (session == null)
+            {
+                throw new Exception("Не удалось получить сессию Nhibernate");
+            }
             using (var tr = session.BeginTransaction())
             {
                 try

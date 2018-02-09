@@ -10,8 +10,8 @@
       <key column="CategoryID"/>
       <one-to-many class="ProductModel"/>
     </bag>
-    <many-to-one name="SubCategories" class="ProductCategoryModel" column="ParentID" cascade = "save-update"/>
-    <bag name="SubCategoriesBag" inverse="true">
+    <many-to-one name="Parent" class="ProductCategoryModel" column="ParentID" cascade = "save-update"/>
+    <bag name="SubCategories" inverse="true">
       <key column="ParentID"/>
       <one-to-many class="ProductCategoryModel"/>
     </bag>
