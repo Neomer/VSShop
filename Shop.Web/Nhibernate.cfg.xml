@@ -8,11 +8,10 @@
       NHibernate.Driver.SqlClientDriver
     </property>
     <property name="connection.connection_string">
-      Server=W0114; database=Shop; Integrated Security=SSPI;
+      Server=W0114; database=Shop; UID=sa; PWD=123456;
     </property>
     <property name="dialect">
       NHibernate.Dialect.MsSql2008Dialect
     </property>
-    <mapping assembly="Shop.SDK"/>
   </session-factory>
 </hibernate-configuration>

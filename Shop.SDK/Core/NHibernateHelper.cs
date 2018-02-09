@@ -33,16 +33,16 @@ namespace Shop.SDK.Core
             var configuration = new Configuration();
             var configurePath = HttpContext.Current.Server.MapPath(@"~\nhibernate.cfg.xml");
             configuration.Configure(configurePath);
+            try
+            {
+                configuration.AddAssembly(typeof(UserModel).Assembly);
+            }
+            catch (MappingException ex)
+            {
 
+            }
             new SchemaUpdate(configuration).Execute(true, true);
-
             _sessionFactory = configuration.BuildSessionFactory();
-        }
-
-        private void UpdateSchema(Configuration configuration)
-        {
-            configuration.AddAssembly(typeof(ProductModel).Assembly);
-            configuration.AddAssembly(typeof(ProductCategoryModel).Assembly);
         }
 
         public ISession OpenSession()
@@ -55,6 +55,25 @@ namespace Shop.SDK.Core
             {
                 throw new Exception("Фабрика сущностей не инициализирована!");
             }
+        }
+
+        public ISession GetCurrentSession()
+        {
+
+            ISession session = null;
+            try
+            {
+                session = _sessionFactory.GetCurrentSession();
+                if (session == null)
+                {
+                    session = OpenSession();
+                }
+            }
+            catch (Exception)
+            {
+                session = OpenSession();
+            }
+            return session;
         }
 
     }

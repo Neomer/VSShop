@@ -1,0 +1,27 @@
+﻿@model Shop.Web.ViewModels.UserRegistrationViewModel
+
+@{ Html.EnableClientValidation(); }
+
+<span>@ViewBag.ErrorMessage</span>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="item">
+        @Html.LabelFor(user => user.Email)
+        @Html.TextBoxFor(user => user.Email)
+        @Html.ValidationMessageFor(user => user.Email)
+    </div>
+    <div class="item">
+        @Html.LabelFor(user => user.Password)
+        @Html.TextBoxFor(user => user.Password)
+        @Html.ValidationMessageFor(user => user.Password)
+    </div>
+    <div class="item">
+        @Html.LabelFor(user => user.PasswordRetype)
+        @Html.TextBoxFor(user => user.PasswordRetype)
+        @Html.ValidationMessageFor(user => user.PasswordRetype)
+    </div>
+    <input type="submit" value="Зарегистрироваться" />
+}

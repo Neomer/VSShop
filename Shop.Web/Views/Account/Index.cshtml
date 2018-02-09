@@ -1,0 +1,23 @@
+﻿@model Shop.Web.ViewModels.UserAuthViewModel
+
+@{ Html.EnableClientValidation(); }
+
+<span>@ViewBag.ErrorMessage</span>
+
+@using (Html.BeginForm("Index", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="item">
+        @Html.LabelFor(user => user.Email)
+        @Html.TextBoxFor(user => user.Email)
+        @Html.ValidationMessageFor(user => user.Email)
+    </div>
+    <div class="item">
+        @Html.LabelFor(user => user.Password)
+        @Html.TextBoxFor(user => user.Password)
+        @Html.ValidationMessageFor(user => user.Password)
+    </div>
+    <input type="submit" value="Войти" />
+    @Html.ActionLink("Зарегистрироваться", "Register", "Account")
+}
