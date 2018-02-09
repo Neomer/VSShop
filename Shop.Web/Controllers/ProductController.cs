@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Shop.SDK.Models.Managers;
 using Shop.SDK.Models;
+using Shop.Web.ViewModels;
 
 namespace Shop.Web.Controllers
 {
@@ -18,8 +19,7 @@ namespace Shop.Web.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            return View();
+            return View(new ProductDetailsViewModel(product));
         }
     }
 }

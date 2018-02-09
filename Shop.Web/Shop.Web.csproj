@@ -124,12 +124,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CategoryDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="ViewModels\UserAuthViewModel.cs" />
     <Compile Include="ViewModels\UserRegistrationViewModel.cs" />
   </ItemGroup>
@@ -193,6 +196,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\SignInMenu.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
