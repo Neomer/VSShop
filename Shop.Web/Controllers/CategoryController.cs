@@ -12,9 +12,9 @@ namespace Shop.Web.Controllers
     public class CategoryController : Controller
     {
         // GET: Category
-        public ActionResult Index()
+        public ActionResult Index(Guid id)
         {
-            var category = ProductCategoryManager.GetById(Guid.Parse("4BF176E5-512B-4366-88D7-7B1884DCB43E"));
+            var category = ProductCategoryManager.GetById(id);
             var list = new List<ProductDetailsViewModel>();
             foreach (var p in category.Products)
             {

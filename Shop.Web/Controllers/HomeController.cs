@@ -22,7 +22,7 @@ namespace Shop.Web.Controllers
             var category = new ProductCategoryModel()
             {
                 ID = Guid.NewGuid(),
-                Name = "Category_1"
+                Name = "Category_2"
             };
             ProductCategoryManager.CreateCategory(category);
             var product = new ProductModel()

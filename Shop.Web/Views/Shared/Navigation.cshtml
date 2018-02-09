@@ -1,0 +1,15 @@
+﻿@using Shop.SDK.Models.Managers
+@using Shop.SDK.Models
+
+@{ 
+    var categories = ProductCategoryManager.GetTopLevel();
+}
+
+<ul class="nav">
+    @foreach (var item in categories)
+    {
+        <li>
+            @Html.ActionLink(item.Name, "Index", "Category", new { id = item.ID }, new { })
+        </li>
+    }
+</ul>

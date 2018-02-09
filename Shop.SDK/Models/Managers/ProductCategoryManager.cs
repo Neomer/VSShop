@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Shop.SDK.Models;
 using Shop.SDK.Core;
+using NHibernate.Criterion;
 
 namespace Shop.SDK.Models.Managers
 {
@@ -57,6 +58,17 @@ namespace Shop.SDK.Models.Managers
                     throw ex;
                 }
             }
+        }
+
+        /// <summary>
+        /// Возвращает список всех категорий верхнего уровня
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<ProductCategoryModel> GetTopLevel()
+        {
+            return NHibernateHelper.Instance.GetCurrentSession().CreateCriteria<ProductCategoryModel>()
+                .Add(Expression.Eq("Parent", null))
+                .List<ProductCategoryModel>();
         }
 
     }
