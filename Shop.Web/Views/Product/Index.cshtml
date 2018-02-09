@@ -1,0 +1,27 @@
+﻿@model Shop.Web.ViewModels.ProductDetailsViewModel
+
+@if (Model != null)
+{
+    <div class="container-fluid">
+        <div class="row">
+            @Html.LabelFor(model => model.ID)
+            <span>@Model.ID</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Name)
+            <span>@Model.Name</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Category)
+            <span>@Model.Category.Name</span>
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Description)
+            <span>@Model.Description</span>
+        </div>
+    </div>
+}
+else
+{
+    <span>Продукт не найден!</span>
+}

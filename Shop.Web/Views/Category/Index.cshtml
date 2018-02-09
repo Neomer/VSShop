@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Shop.Web.ViewModels.ProductDetailsViewModel>
+
+@foreach (var product in Model)
+{
+    <span>@Html.ActionLink(product.Name, "Index", "Product", new { id = product.ID }, new { })</span>
+}
