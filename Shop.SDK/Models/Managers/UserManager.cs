@@ -19,6 +19,11 @@ namespace Shop.SDK.Models.Managers
                 .UniqueResult<UserModel>();
         }
 
+        public static UserModel GetById(Guid id)
+        {
+            return NHibernateHelper.Instance.GetCurrentSession().Get<UserModel>(id);
+        }
+
         public static IEnumerable<UserModel> GetAll()
         {
             return NHibernateHelper.Instance.GetCurrentSession().CreateCriteria<UserModel>()

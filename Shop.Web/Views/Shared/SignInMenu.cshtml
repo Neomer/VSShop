@@ -1,6 +1,6 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
-    <li>@Html.ActionLink(@User.Identity.Name, "Index", "Account")</li>
+    <li>@Html.ActionLink(@User.Identity.Name, "UserInfo", "Account", new {   })</li>
     <li>@Html.ActionLink("Выйти", "Logout", "Account")</li>
 }
 else

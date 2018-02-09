@@ -86,5 +86,25 @@ namespace Shop.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
+        [HttpGet]
+        public ActionResult UserInfo(Guid id)
+        {
+            var user = UserManager.GetById(id);
+            if (user != null)
+            {
+                var model = new UserInfoViewModel()
+                {
+                    Email = user.Email,
+                    BirthDate = user.BirthDate,
+                    LastVisitDate = user.LastVisitDate,
+                    RegisterDate = user.RegisterDate
+                };
+
+                return View(model);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
