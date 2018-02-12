@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Модель для представления партии
     /// </summary>
-    public class ConsignmentModel : IIdentifyed
+    public class ConsignmentModel : BaseEntity
     {
         /// <summary>
         /// Дата поступления

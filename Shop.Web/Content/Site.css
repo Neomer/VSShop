@@ -51,3 +51,24 @@ div.hoverable:hover {
     display: block;
     margin: auto;
 }
+
+/*
+    Раздел: детальная информация о продукте
+    Изображение продукта
+*/
+div.product-details-img {
+    display:inline-block;
+    vertical-align: middle;
+}
+
+/*
+    Раздел: детальная информация о продукте
+    Основная информация о продукте
+*/
+div.product-details-info label {
+    width:250px;
+}
+
+div.tab-content {
+    padding-top: 5px;
+}

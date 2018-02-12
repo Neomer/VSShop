@@ -21,5 +21,24 @@ namespace Shop.Web.Controllers
             }
             return View(new ProductDetailsViewModel(product));
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Create(ProductCreationViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(model);
+        }
+
     }
 }

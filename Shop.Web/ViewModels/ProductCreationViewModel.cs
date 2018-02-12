@@ -7,30 +7,16 @@ using System.Web;
 
 namespace Shop.Web.ViewModels
 {
-    public class ProductDetailsViewModel
+    public class ProductCreationViewModel
     {
-        public ProductDetailsViewModel()
-        {
-
-        }
-
-        public ProductDetailsViewModel(ProductModel model)
-        {
-            ID = model.ID;
-            Name = model.Name;
-            Category = model.Category;
-            Description = model.Description;
-        }
-
-        [Display(Name = "Идентификатор")]
-        public Guid ID { get; set; }
-
         [Required]
         [Display(Name = "Наименование")]
-        [StringLength(255)]
+        [DataType(DataType.Text)]
+        [MaxLength(255, ErrorMessage = "Длина не должна превышать 255 сиволов.")]
         public string Name { get; set; }
 
         [Display(Name = "Подробное описание")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]

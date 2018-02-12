@@ -91,7 +91,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IWebEditor.cs" />
     <Compile Include="Core\NHibernateHelper.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\ConsignmentItemModel.cs" />
     <Compile Include="Models\IIdentifyed.cs" />
     <Compile Include="Models\Managers\ConsignmentItemManager.cs" />

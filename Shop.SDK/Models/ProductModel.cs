@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Shop.SDK.Models
 {
-    public class ProductModel : IIdentifyed
+    public class ProductModel : BaseEntity
     {
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
