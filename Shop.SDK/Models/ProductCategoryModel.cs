@@ -9,6 +9,14 @@ namespace Shop.SDK.Models
     {
         public virtual string Name { get; set; }
         public virtual ProductCategoryModel Parent { get; set; }
+        /// <summary>
+        /// Технические характеристики для товаров данной категории
+        /// </summary>
+        public virtual string Specification { get; set; }
+        /// <summary>
+        /// Список фильтров
+        /// </summary>
+        public virtual string Filters { get; set; }
 
         public virtual IList<ProductModel> Products { get; set; }
         public virtual IList<ProductCategoryModel> SubCategories { get; set; }

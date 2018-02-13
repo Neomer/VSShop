@@ -1,15 +1,16 @@
 ﻿@using Shop.SDK.Models.Managers
 @using Shop.SDK.Models
+@using Shop.Web.Extension
 
 @{ 
     var categories = ProductCategoryManager.GetTopLevel();
 }
 
-<ul class="nav">
+<ul class="nav nav-tabs nav-stacked span">
     @foreach (var item in categories)
     {
         <li>
-            @Html.ActionLink(item.Name, "Index", "Category", new { id = item.ID }, new { })
+            @Html.ActionLink(item.Name + " (" + item.Products.Count() + ")", "Index", "Category", new { id = item.ID }, new { })
         </li>
     }
 </ul>

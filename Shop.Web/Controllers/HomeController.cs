@@ -19,12 +19,31 @@ namespace Shop.Web.Controllers
 
         public ActionResult Create()
         {
+            var categoryParent = new ProductCategoryModel()
+            {
+                ID = Guid.NewGuid(),
+                Name = "Удилища"
+            };
+            ProductCategoryManager.CreateCategory(categoryParent);
             var category = new ProductCategoryModel()
             {
                 ID = Guid.NewGuid(),
-                Name = "Category_2"
+                Name = "Фидерные",
+                Parent = categoryParent
             };
-            ProductCategoryManager.CreateCategory(category);
+            category = new ProductCategoryModel()
+            {
+                ID = Guid.NewGuid(),
+                Name = "Спиннинговые",
+                Parent = categoryParent
+            };
+            category = new ProductCategoryModel()
+            {
+                ID = Guid.NewGuid(),
+                Name = "Маховые",
+                Parent = categoryParent
+            };
+
             var product = new ProductModel()
             {
                 ID = Guid.NewGuid(),
