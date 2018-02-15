@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Shop.SDK.Core;
 using Shop.SDK.Models;
 using Shop.SDK.Models.Managers;
+using Shop.Web.ViewModels.Categories;
 
 namespace Shop.Web.Controllers
 {
@@ -35,7 +36,8 @@ namespace Shop.Web.Controllers
             {
                 ID = Guid.NewGuid(),
                 Name = "Спиннинговые",
-                Parent = categoryParent
+                Parent = categoryParent,
+                Specification = new SpinningRodCategorySpecification()
             };
             category = new ProductCategoryModel()
             {

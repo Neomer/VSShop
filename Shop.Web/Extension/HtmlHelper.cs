@@ -49,5 +49,11 @@ namespace Shop.Web.Extension
             }
             return element.ToString();
         }
+
+        public static string CreateSpecification(this HtmlHelper helper, IProductCategorySpecification model)
+        {
+            var ret = model.GetType().GetProperties();
+            return "";
+        }
     }
 }
