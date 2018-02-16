@@ -16,6 +16,9 @@
       <generator class="guid"/>
     </id>
     <property name="Name" not-null="true" />
+    <property name="Specification">
+      <column name="Specification" sql-type="text"/>
+    </property>
     <bag name="Products" inverse="true">
       <key column="CategoryID"/>
       <one-to-many class="ProductModel"/>

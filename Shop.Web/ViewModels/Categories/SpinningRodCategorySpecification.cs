@@ -25,7 +25,6 @@ namespace Shop.Web.ViewModels.Categories
 
         public IDictionary<string, string> toList()
         {
-            
             return null;
         }
     }

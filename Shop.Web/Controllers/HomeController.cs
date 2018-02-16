@@ -7,6 +7,8 @@ using Shop.SDK.Core;
 using Shop.SDK.Models;
 using Shop.SDK.Models.Managers;
 using Shop.Web.ViewModels.Categories;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Shop.Web.Controllers
 {
@@ -14,6 +16,26 @@ namespace Shop.Web.Controllers
     {
         public ActionResult Index()
         {
+
+            var specification = new SpinningRodCategorySpecification();
+            specification.Length = 2.3;
+            specification.Manufacturer = "Test";
+            specification.Test = new Range<int>() { Min = 10, Max = 30 };
+            specification.Sections = 2;
+
+            var xml = new XmlSerializer(specification.GetType());
+
+            string ret;
+            using (StringWriter textWriter = new StringWriter())
+            {
+                xml.Serialize(textWriter, specification);
+                ret = textWriter.ToString();
+            }
+
+            using (var textReader = new StringReader(ret))
+            {
+                var obj = xml.Deserialize(textReader) as SpinningRodCategorySpecification;
+            }
 
             return View();
         }
@@ -43,7 +65,7 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         Name = "Спиннинговые",
                         Parent = categoryParent,
-                        Specification = new SpinningRodCategorySpecification()
+                        Specification = null
                     };
                     ProductCategoryManager.CreateEntityUnsave(category);
                     category = new ProductCategoryModel()
@@ -92,7 +114,7 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         Name = "Воблеры",
                         Parent = catBaits,
-                        Specification = new SpinningRodCategorySpecification()
+                        Specification = null
                     };
                     ProductCategoryManager.CreateEntityUnsave(catWobblers);
                     var catTwisters = new ProductCategoryModel()
@@ -143,7 +165,38 @@ namespace Shop.Web.Controllers
                     var consItem = new ConsignmentItemModel()
                     {
                         Product = productSparrow,
-                        Cost = 25.23,
+                        Cost = new Random().Next() + new Random().NextDouble(),
+                        Count = new Random().Next(),
+                        Consignment = cons
+                    };
+                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+
+                    cons = new ConsignmentModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        CreationDate = DateTime.Now
+                    };
+                    ConsignmentManager.CreateEntityUnsave(cons);
+
+                    consItem = new ConsignmentItemModel()
+                    {
+                        Product = productSparrow,
+                        Cost = new Random().Next() + new Random().NextDouble(),
+                        Count = new Random().Next(),
+                        Consignment = cons
+                    };
+                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+
+                    cons = new ConsignmentModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        CreationDate = DateTime.Now
+                    };
+                    ConsignmentManager.CreateEntityUnsave(cons);
+                    consItem = new ConsignmentItemModel()
+                    {
+                        Product = productSparrow,
+                        Cost = new Random().Next() + new Random().NextDouble(),
                         Count = new Random().Next(),
                         Consignment = cons
                     };

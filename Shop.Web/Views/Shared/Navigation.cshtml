@@ -9,7 +9,7 @@
         @foreach (var item in list)
         {
             <li>
-                @if (item.SubCategories.Count() == 0)
+                @if ((item.SubCategories == null) || (item.SubCategories.Count() == 0))
                 {
                     @Html.ActionLink(item.Name, "Index", "Category", new { id = item.ID }, new { })
                 }
