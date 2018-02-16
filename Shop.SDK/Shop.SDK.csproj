@@ -95,6 +95,8 @@
     <Compile Include="Core\NHibernateHelper.cs" />
     <Compile Include="Core\Range.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\BasketItemModel.cs" />
+    <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Models\ConsignmentItemModel.cs" />
     <Compile Include="Models\IIdentifyed.cs" />
     <Compile Include="Models\IProductCategorySpecification.cs" />

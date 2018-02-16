@@ -30,5 +30,9 @@ namespace Shop.SDK.Models
         /// Дата последнего визита
         /// </summary>
         public virtual DateTime? LastVisitDate { get; set; }
+        /// <summary>
+        /// Корзины, созданные для пользователя
+        /// </summary>
+        public virtual IList<BasketModel> Baskets { get; set; }
     }
 }
