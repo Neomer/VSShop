@@ -76,3 +76,11 @@ div.tab-content {
 .spaced {
     margin-bottom: 10px;
 }
+
+.no-padding {
+    padding: 0px;
+}
+
+.control-button-panel {
+    padding-top: 10px;
+}

@@ -101,6 +101,8 @@
     <Compile Include="Models\IIdentifyed.cs" />
     <Compile Include="Models\IProductCategorySpecification.cs" />
     <Compile Include="Models\Managers\BaseManager.cs" />
+    <Compile Include="Models\Managers\BasketItemManager.cs" />
+    <Compile Include="Models\Managers\BasketManager.cs" />
     <Compile Include="Models\Managers\ConsignmentItemManager.cs" />
     <Compile Include="Models\Managers\ConsignmentManager.cs" />
     <Compile Include="Models\Managers\ProductCategoryManager.cs" />

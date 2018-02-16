@@ -155,7 +155,7 @@ namespace Shop.Web.Controllers
                     #endregion
 
                     #region Поставки для товаров категории "Воблеры"
-                    var random = new Random();
+                    var random = new Random(DateTime.Now.Millisecond + DateTime.Now.Second * 1000);
                     var cons = new ConsignmentModel()
                     {
                         ID = Guid.NewGuid(),

@@ -39,7 +39,7 @@ namespace Shop.Web.Controllers
                     ViewBag.ErrorMessage = "Пользователь не найден!";
                     return View(model);
                 }
-                FormsAuthentication.SetAuthCookie(model.Email, true);
+                FormsAuthentication.SetAuthCookie(user.ID.ToString(), true);
                 return RedirectToAction("Index", "Home");
             }
 
