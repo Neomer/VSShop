@@ -25,7 +25,7 @@ namespace Shop.Web.Controllers
                 ID = Guid.NewGuid(),
                 Name = "Удилища"
             };
-            ProductCategoryManager.CreateCategory(categoryParent);
+            ProductCategoryManager.CreateEntity(categoryParent);
             var category = new ProductCategoryModel()
             {
                 ID = Guid.NewGuid(),
@@ -53,7 +53,7 @@ namespace Shop.Web.Controllers
                 Category = category,
                 Description = "Description for Product_1"
             };
-            ProductManager.CreateProduct(product);
+            ProductManager.CreateEntity(product);
 
             product = new ProductModel()
             {
@@ -62,7 +62,7 @@ namespace Shop.Web.Controllers
                 Category = category,
                 Description = "Description for Product_2"
             };
-            ProductManager.CreateProduct(product);
+            ProductManager.CreateEntity(product);
             product = new ProductModel()
             {
                 ID = Guid.NewGuid(),
@@ -70,7 +70,7 @@ namespace Shop.Web.Controllers
                 Category = category,
                 Description = "Description for Product_3"
             };
-            ProductManager.CreateProduct(product);
+            ProductManager.CreateEntity(product);
             product = new ProductModel()
             {
                 ID = Guid.NewGuid(),
@@ -78,14 +78,14 @@ namespace Shop.Web.Controllers
                 Category = category,
                 Description = "Description for Product_4"
             };
-            ProductManager.CreateProduct(product);
+            ProductManager.CreateEntity(product);
 
             var cons = new ConsignmentModel()
             {
                 ID = Guid.NewGuid(),
                 CreationDate = DateTime.Now
             };
-            ConsignmentManager.CreateConsignment(cons);
+            ConsignmentManager.CreateEntity(cons);
 
             var consItem = new ConsignmentItemModel()
             {
@@ -94,7 +94,7 @@ namespace Shop.Web.Controllers
                 Count = 34,
                 Consignment = cons
             };
-            ConsignmentItemManager.CreateConsignment(consItem);
+            ConsignmentItemManager.CreateEntity(consItem);
 
             return RedirectToAction("Index");
         }

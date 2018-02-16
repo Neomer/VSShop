@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Элемент партии
     /// </summary>
-    public class ConsignmentItemModel
+    public class ConsignmentItemModel : BaseEntity
     {
         /// <summary>
         /// Продукт
