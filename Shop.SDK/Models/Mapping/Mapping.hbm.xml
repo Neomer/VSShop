@@ -73,4 +73,24 @@
     <property name="Count" not-null="true" />
   </class>
 
+  <class name="BasketModel" table="Basket" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid" />
+    </id>
+    <property name="CreationDate" not-null="true" />
+    <bag name="Items" inverse="true">
+      <key column="BasketID"/>
+      <one-to-many class="BasketItemModel"/>
+    </bag>
+  </class>
+
+  <class name="BasketItemModel" table="BasketItems" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid" />
+    </id>
+    <many-to-one name="Basket" class="BasketModel" column="BasketID" cascade="save-update"/>
+    <many-to-one name="Consignment" class="ConsignmentModel" column="ConsignmentID" cascade="save-update"/>
+    <property name="Count" not-null="true" />
+  </class>
+
 </hibernate-mapping>

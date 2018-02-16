@@ -155,6 +155,7 @@ namespace Shop.Web.Controllers
                     #endregion
 
                     #region Поставки для товаров категории "Воблеры"
+                    var random = new Random();
                     var cons = new ConsignmentModel()
                     {
                         ID = Guid.NewGuid(),
@@ -165,8 +166,8 @@ namespace Shop.Web.Controllers
                     var consItem = new ConsignmentItemModel()
                     {
                         Product = productSparrow,
-                        Cost = new Random().Next() + new Random().NextDouble(),
-                        Count = new Random().Next(),
+                        Cost = random.Next() % 1000 + Math.Round(random.NextDouble(), 2),
+                        Count = random.Next() % 100,
                         Consignment = cons
                     };
                     ConsignmentItemManager.CreateEntityUnsave(consItem);
@@ -181,8 +182,8 @@ namespace Shop.Web.Controllers
                     consItem = new ConsignmentItemModel()
                     {
                         Product = productSparrow,
-                        Cost = new Random().Next() + new Random().NextDouble(),
-                        Count = new Random().Next(),
+                        Cost = random.Next() % 1000 + Math.Round(random.NextDouble(), 2),
+                        Count = random.Next() % 100,
                         Consignment = cons
                     };
                     ConsignmentItemManager.CreateEntityUnsave(consItem);
@@ -196,8 +197,8 @@ namespace Shop.Web.Controllers
                     consItem = new ConsignmentItemModel()
                     {
                         Product = productSparrow,
-                        Cost = new Random().Next() + new Random().NextDouble(),
-                        Count = new Random().Next(),
+                        Cost = random.Next() % 1000 + Math.Round(random.NextDouble(), 2),
+                        Count = random.Next() % 100,
                         Consignment = cons
                     };
                     ConsignmentItemManager.CreateEntityUnsave(consItem);

@@ -11,6 +11,10 @@ namespace Shop.SDK.Models
     public class BasketItemModel : BaseEntity
     {
         /// <summary>
+        /// Корзина
+        /// </summary>
+        public virtual BasketModel Basket { get; set; }
+        /// <summary>
         /// Поставка товара
         /// </summary>
         public virtual ConsignmentItemModel Consignment { get; set; }
