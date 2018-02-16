@@ -15,7 +15,7 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Технические характеристики для товаров данной категории
         /// </summary>
-        public virtual IProductCategorySpecification Specification { get; set; }
+        public virtual string Specification { get; set; }
         /// <summary>
         /// Список фильтров
         /// </summary>
