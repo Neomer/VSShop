@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Shop.SDK.Models
 {
+    /// <summary>
+    /// Категория к которой относится товар
+    /// </summary>
     public class ProductCategoryModel : BaseEntity
     {
         public virtual string Name { get; set; }

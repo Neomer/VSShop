@@ -24,6 +24,7 @@ namespace Shop.Web.Controllers
             {
                 try
                 {
+                    #region Категория "Удилища"
                     var categoryParent = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
@@ -52,41 +53,86 @@ namespace Shop.Web.Controllers
                         Parent = categoryParent
                     };
                     ProductCategoryManager.CreateEntityUnsave(category);
+                    #endregion
 
-                    var product = new ProductModel()
+                    #region Категория "Приманки"
+                    var catBaits = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
-                        Name = "Product_1",
-                        Category = category,
-                        Description = "Description for Product_1"
+                        Name = "Приманки"
                     };
-                    ProductManager.CreateEntityUnsave(product);
+                    ProductCategoryManager.CreateEntityUnsave(catBaits);
 
-                    product = new ProductModel()
+                    var catSpoons = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
-                        Name = "Product_2",
-                        Category = category,
-                        Description = "Description for Product_2"
+                        Name = "Блесны",
+                        Parent = catBaits
                     };
-                    ProductManager.CreateEntityUnsave(product);
-                    product = new ProductModel()
-                    {
-                        ID = Guid.NewGuid(),
-                        Name = "Product_3",
-                        Category = category,
-                        Description = "Description for Product_3"
-                    };
-                    ProductManager.CreateEntityUnsave(product);
-                    product = new ProductModel()
-                    {
-                        ID = Guid.NewGuid(),
-                        Name = "Product_4",
-                        Category = category,
-                        Description = "Description for Product_4"
-                    };
-                    ProductManager.CreateEntityUnsave(product);
+                    ProductCategoryManager.CreateEntityUnsave(catSpoons);
 
+                    var catWaveringSpoon = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Колеблющиеся",
+                        Parent = catSpoons
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catWaveringSpoon);
+
+                    var catRotatingSpoon = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Вращающиеся",
+                        Parent = catSpoons
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catRotatingSpoon);
+
+                    var catWobblers = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Воблеры",
+                        Parent = catBaits,
+                        Specification = new SpinningRodCategorySpecification()
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catWobblers);
+                    var catTwisters = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Силиконовые приманки",
+                        Parent = catBaits
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catTwisters);
+                    #endregion
+
+                    #region Товары для категории Воблеры
+                    var productTungsten = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Tungsten",
+                        Category = catWobblers,
+                        Description = "Bearking Tungsten balls long casting 10cm 17.5g New model fishing lures hard bait dive 1.8m minnow,quality professional minnow"
+                    };
+                    ProductManager.CreateEntityUnsave(productTungsten);
+
+                    var productSparrow = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Sparrow",
+                        Category = catWobblers,
+                        Description = "Bearking A+ 2017 hot model fishing lures hard bait 7color for choose 10cm 15g minnow,quality professional minnow depth0.8-1.5m"
+                    };
+                    ProductManager.CreateEntityUnsave(productSparrow);
+                    var productPlusOne = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Plus One Minnow Pro",
+                        Category = catWobblers,
+                        Description = "Great Discount!Retail fishing lures,assorted colors quality Minnow 110mm 14g,Tungsten ball bearking 2017 model crank bait"
+                    };
+                    ProductManager.CreateEntityUnsave(productPlusOne);
+                    #endregion
+
+                    #region Поставки для товаров категории "Воблеры"
                     var cons = new ConsignmentModel()
                     {
                         ID = Guid.NewGuid(),
@@ -96,12 +142,13 @@ namespace Shop.Web.Controllers
 
                     var consItem = new ConsignmentItemModel()
                     {
-                        Product = product,
+                        Product = productSparrow,
                         Cost = 25.23,
-                        Count = 34,
+                        Count = new Random().Next(),
                         Consignment = cons
                     };
                     ConsignmentItemManager.CreateEntityUnsave(consItem);
+                    #endregion
 
                     transaction.Commit();
                 }
