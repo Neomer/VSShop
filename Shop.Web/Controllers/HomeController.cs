@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Shop.SDK.Core;
 using Shop.SDK.Models;
 using Shop.SDK.Models.Managers;
+using Shop.Web.ViewModels.Categories;
 
 namespace Shop.Web.Controllers
 {
@@ -19,61 +20,143 @@ namespace Shop.Web.Controllers
 
         public ActionResult Create()
         {
-            var category = new ProductCategoryModel()
+            using (var transaction = NHibernateHelper.Instance.GetCurrentSession().BeginTransaction())
             {
-                ID = Guid.NewGuid(),
-                Name = "Category_2"
-            };
-            ProductCategoryManager.CreateCategory(category);
-            var product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_1",
-                Category = category,
-                Description = "Description for Product_1"
-            };
-            ProductManager.CreateProduct(product);
+                try
+                {
+                    #region Категория "Удилища"
+                    var categoryParent = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Удилища"
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    var category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Фидерные",
+                        Parent = categoryParent
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(category);
+                    category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Спиннинговые",
+                        Parent = categoryParent,
+                        Specification = new SpinningRodCategorySpecification()
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(category);
+                    category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Маховые",
+                        Parent = categoryParent
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(category);
+                    #endregion
 
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_2",
-                Category = category,
-                Description = "Description for Product_2"
-            };
-            ProductManager.CreateProduct(product);
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_3",
-                Category = category,
-                Description = "Description for Product_3"
-            };
-            ProductManager.CreateProduct(product);
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_4",
-                Category = category,
-                Description = "Description for Product_4"
-            };
-            ProductManager.CreateProduct(product);
+                    #region Категория "Приманки"
+                    var catBaits = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Приманки"
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catBaits);
 
-            var cons = new ConsignmentModel()
-            {
-                ID = Guid.NewGuid(),
-                CreationDate = DateTime.Now
-            };
-            ConsignmentManager.CreateConsignment(cons);
+                    var catSpoons = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Блесны",
+                        Parent = catBaits
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catSpoons);
 
-            var consItem = new ConsignmentItemModel()
-            {
-                Product = product,
-                Cost = 25.23,
-                Count = 34,
-                Consignment = cons
-            };
-            ConsignmentItemManager.CreateConsignment(consItem);
+                    var catWaveringSpoon = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Колеблющиеся",
+                        Parent = catSpoons
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catWaveringSpoon);
+
+                    var catRotatingSpoon = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Вращающиеся",
+                        Parent = catSpoons
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catRotatingSpoon);
+
+                    var catWobblers = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Воблеры",
+                        Parent = catBaits,
+                        Specification = new SpinningRodCategorySpecification()
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catWobblers);
+                    var catTwisters = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Силиконовые приманки",
+                        Parent = catBaits
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(catTwisters);
+                    #endregion
+
+                    #region Товары для категории Воблеры
+                    var productTungsten = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Tungsten",
+                        Category = catWobblers,
+                        Description = "Bearking Tungsten balls long casting 10cm 17.5g New model fishing lures hard bait dive 1.8m minnow,quality professional minnow"
+                    };
+                    ProductManager.CreateEntityUnsave(productTungsten);
+
+                    var productSparrow = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Sparrow",
+                        Category = catWobblers,
+                        Description = "Bearking A+ 2017 hot model fishing lures hard bait 7color for choose 10cm 15g minnow,quality professional minnow depth0.8-1.5m"
+                    };
+                    ProductManager.CreateEntityUnsave(productSparrow);
+                    var productPlusOne = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Bearking Plus One Minnow Pro",
+                        Category = catWobblers,
+                        Description = "Great Discount!Retail fishing lures,assorted colors quality Minnow 110mm 14g,Tungsten ball bearking 2017 model crank bait"
+                    };
+                    ProductManager.CreateEntityUnsave(productPlusOne);
+                    #endregion
+
+                    #region Поставки для товаров категории "Воблеры"
+                    var cons = new ConsignmentModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        CreationDate = DateTime.Now
+                    };
+                    ConsignmentManager.CreateEntityUnsave(cons);
+
+                    var consItem = new ConsignmentItemModel()
+                    {
+                        Product = productSparrow,
+                        Cost = 25.23,
+                        Count = new Random().Next(),
+                        Consignment = cons
+                    };
+                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+                    #endregion
+
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+            }
 
             return RedirectToAction("Index");
         }

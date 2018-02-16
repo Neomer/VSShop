@@ -27,6 +27,7 @@ namespace Shop.SDK.Core
         #endregion
 
         private ISessionFactory _sessionFactory = null;
+        public ISession _session = null;
 
         private NHibernateHelper()
         {
@@ -59,21 +60,23 @@ namespace Shop.SDK.Core
 
         public ISession GetCurrentSession()
         {
-
-            ISession session = null;
-            try
+            if (_session == null)
             {
-                session = _sessionFactory.GetCurrentSession();
-                if (session == null)
+                try
                 {
-                    session = OpenSession();
+                    _session = _sessionFactory.GetCurrentSession();
+                    if (_session == null)
+                    {
+                        _session = OpenSession();
+                    }
                 }
+                catch (Exception)
+                {
+                    _session = OpenSession();
+                }
+
             }
-            catch (Exception)
-            {
-                session = OpenSession();
-            }
-            return session;
+            return _session;
         }
 
     }

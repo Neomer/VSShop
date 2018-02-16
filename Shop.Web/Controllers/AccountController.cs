@@ -67,7 +67,7 @@ namespace Shop.Web.Controllers
                 };
                 try
                 {
-                    UserManager.CreateUser(user);
+                    UserManager.CreateEntity(user);
                 }
                 catch (Exception ex)
                 {

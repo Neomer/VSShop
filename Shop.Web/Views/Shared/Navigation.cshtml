@@ -1,15 +1,26 @@
 ﻿@using Shop.SDK.Models.Managers
 @using Shop.SDK.Models
+@using Shop.Web.Extension
+ 
+@helper ShowTreeNode(IEnumerable<ProductCategoryModel> list)
+{
 
-@{ 
-    var categories = ProductCategoryManager.GetTopLevel();
+    <ul>
+        @foreach (var item in list)
+        {
+            <li>
+                @if (item.SubCategories.Count() == 0)
+                {
+                    @Html.ActionLink(item.Name, "Index", "Category", new { id = item.ID }, new { })
+                }
+                else
+                {
+                    <a href="#">@item.Name</a>
+                    @ShowTreeNode(item.SubCategories)
+                }
+            </li>
+        }
+    </ul>
 }
 
-<ul class="nav">
-    @foreach (var item in categories)
-    {
-        <li>
-            @Html.ActionLink(item.Name, "Index", "Category", new { id = item.ID }, new { })
-        </li>
-    }
-</ul>
+@ShowTreeNode(ProductCategoryManager.GetTopLevel())

@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Модель данных для сущности пользователя. Используется для регистрации, авторизации, аутентификации.
     /// </summary>
-    public class UserModel : IIdentifyed
+    public class UserModel : BaseEntity
     {
         /// <summary>
         /// E-Mail

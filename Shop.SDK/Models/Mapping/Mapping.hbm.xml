@@ -37,6 +37,17 @@
       <column name="Description" sql-type="text"/>
     </property>
     <many-to-one name="Category" class="ProductCategoryModel" column="CategoryID" cascade="save-update"/>
+    <bag name="Variants" inverse="true">
+      <key column="ProductID"/>
+      <one-to-many class="ProductVariantModel"/>
+    </bag>
+  </class>
+
+  <class name="ProductVariantModel" table="ProductVariant" dynamic-update="true" >
+    <id name="ID" type="guid">
+      <generator class="guid"/>
+    </id>
+    <many-to-one name="Product" class="ProductModel" column="ProductID" cascade="save-update"/>
   </class>
 
   <class name="ConsignmentModel" table="Consignment" dynamic-update="true" >
