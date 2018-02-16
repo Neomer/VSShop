@@ -11,17 +11,29 @@
                 </div>
                 <div class="col-md-8 product-details-info">
                     <div class="container-fluid">
-                        <div class="row">
-                            @Html.LabelFor(model => model.Name)
+                        <div class="form-group row">
+                            <div class="col-md-3 inline-block">
+                                @Html.LabelFor(model => model.Name)
+                            </div>
                             <span>@Model.Name</span>
                         </div>
-                        <div class="row">
-                            @Html.LabelFor(model => model.ID)
+                        <div class="form-group row">
+                            <div class="col-md-3 inline-block">
+                                @Html.LabelFor(model => model.ID)
+                            </div>
                             <span>@Model.ID</span>
                         </div>
-                        <div class="row">
-                            @Html.LabelFor(model => model.Description)
+                        <div class="form-group row">
+                            <div class="col-md-3 inline-block">
+                                @Html.LabelFor(model => model.Description)
+                            </div>
                             <span>@Model.Description</span>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 inline-block">
+                                <label>Кол-во</label>
+                            </div>
+                            <input class="form-control inline-block small-number" type="number" value="0" />
                         </div>
                         <div class="row">
                             <div class="container-fluid no-padding control-button-panel">

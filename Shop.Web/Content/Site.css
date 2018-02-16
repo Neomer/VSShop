@@ -66,7 +66,6 @@ div.product-details-img {
     Основная информация о продукте
 */
 div.product-details-info label {
-    width:250px;
 }
 
 div.tab-content {
@@ -84,3 +83,12 @@ div.tab-content {
 .control-button-panel {
     padding-top: 10px;
 }
+
+.inline-block {
+    display: inline-block;
+}
+
+input.small-number {
+    width: 100px;
+}
+

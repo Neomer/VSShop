@@ -22,7 +22,7 @@ namespace Shop.Web.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult AjaxAddProduct(Guid? product)
+        public ActionResult AjaxAddProduct(Guid product, double count)
         {
             Guid uid = Guid.Empty;
             if (!Guid.TryParse(User.Identity.Name, out uid))
