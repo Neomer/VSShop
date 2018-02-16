@@ -27,7 +27,7 @@ namespace Shop.SDK.Core
         #endregion
 
         private ISessionFactory _sessionFactory = null;
-        public ISession _session = null;
+        private ISession _session = null;
 
         private NHibernateHelper()
         {

@@ -31,9 +31,10 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-3 inline-block">
-                                <label>Кол-во</label>
+                                <label>Количество</label>
                             </div>
-                            <input class="form-control inline-block small-number" type="number" value="0" />
+                            <input class="form-control inline-block small-number" type="number" value="0" id="txtCount" min="0" max="@Model.ItemsAvailable" />
+                            <label>На складе: </label> <span>@Model.ItemsAvailable</span>
                         </div>
                         <div class="row">
                             <div class="container-fluid no-padding">
@@ -70,11 +71,17 @@
         </div>
     </div>
     <script type="text/javascript">
+        $(document).ready(function () {
+            //$("#txtCount").
+        });
+
         function AddProductToBasket(id)
         {
+            var count = $("#txtCount").val();
+            if (count <= 0) return;
             $.ajax({
                 method: "GET",
-                url: "@Url.Action("AjaxAddProduct", "Basket")?id=" + id,
+                url: "@Url.Action("AjaxAddProduct", "Basket")?product=" + id + "&count=" + count,
                 success: function(data)
                 {
                     console.log(data);

@@ -13,12 +13,12 @@ namespace Shop.Web.Managers
     {
         public static BaseAjaxViewModel CreateSuccessAjaxAnswer(IAjaxResult result, string message = null)
         {
-            return new BaseAjaxViewModel() { State = AjaxViewModelState.Success, Message = message, Result = result };
+            return new BaseAjaxViewModel() { Success = true, Message = message, Result = result };
         }
 
         public static BaseAjaxViewModel CreateErrorAjaxAnswer(IAjaxResult result, string message)
         {
-            return new BaseAjaxViewModel() { State = AjaxViewModelState.Error, Message = message, Result = result };
+            return new BaseAjaxViewModel() { Success = false, Message = message, Result = result };
         }
 
         public static string SerializeAjaxAnswer(BaseAjaxViewModel model)

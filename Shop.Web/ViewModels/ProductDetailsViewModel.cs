@@ -1,4 +1,5 @@
 ﻿using Shop.SDK.Models;
+using Shop.SDK.Models.Managers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,8 @@ namespace Shop.Web.ViewModels
             Name = model.Name;
             Category = model.Category;
             Description = model.Description;
+            var cons = ConsignmentItemManager.GetByProduct(model).FirstOrDefault();
+            ItemsAvailable = (cons == null) ? 0 : cons.Count;
         }
 
         [Display(Name = "Идентификатор")]
@@ -40,5 +43,8 @@ namespace Shop.Web.ViewModels
 
         [Display(Name = "Изображение")]
         public string Image { get; set; }
+
+        [Display(Name = "Кол-во на складе")]
+        public double ItemsAvailable { get; set; }
     }
 }

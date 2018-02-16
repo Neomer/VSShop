@@ -8,14 +8,8 @@ namespace Shop.Web.ViewModels.Ajax
     [Serializable]
     public class BaseAjaxViewModel
     {
-        public AjaxViewModelState State { get; set; }
+        public bool Success { get; set; }
         public string Message { get; set; }
         public IAjaxResult Result { get; set; }
-    }
-
-    public enum AjaxViewModelState
-    {
-        Success,
-        Error
     }
 }

@@ -44,7 +44,8 @@ namespace Shop.Web.Controllers
                     AjaxManager.CreateSuccessAjaxAnswer(
                         new AddProductToBasketViewModel() {
                             Basket = new BasketStatisticViewModel(basket)
-                        }
+                        },
+                        "Товар успешно добавлен!"
                     )
                 )
             );
