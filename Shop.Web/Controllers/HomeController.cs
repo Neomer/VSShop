@@ -29,14 +29,14 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         Name = "Удилища"
                     };
-                    ProductCategoryManager.CreateEntity(categoryParent);
+                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
                     var category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
                         Name = "Фидерные",
                         Parent = categoryParent
                     };
-                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    ProductCategoryManager.CreateEntityUnsave(category);
                     category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
@@ -44,14 +44,14 @@ namespace Shop.Web.Controllers
                         Parent = categoryParent,
                         Specification = new SpinningRodCategorySpecification()
                     };
-                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    ProductCategoryManager.CreateEntityUnsave(category);
                     category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
                         Name = "Маховые",
                         Parent = categoryParent
                     };
-                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    ProductCategoryManager.CreateEntityUnsave(category);
 
                     var product = new ProductModel()
                     {
