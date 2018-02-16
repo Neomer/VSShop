@@ -29,11 +29,10 @@ namespace Shop.SDK.Models.Managers
         }
 
         /// <summary>
-        /// Создает сущность
+        /// Создает сущность внутри собственной транзакции
         /// </summary>
         /// <param name="entity"></param>
-        /// <param name="transaction"></param>
-        public static void CreateEntity(T entity, ITransaction transaction = null)
+        public static void CreateEntity(T entity)
         {
             var session = NHibernateHelper.Instance.GetCurrentSession();
             if (session == null)
@@ -41,21 +40,33 @@ namespace Shop.SDK.Models.Managers
                 throw new Exception("Не удалось получить сессию Nhibernate");
             }
 
-            if (transaction == null)
+            using (var tr = session.BeginTransaction())
             {
-                transaction = session.BeginTransaction();
+                try
+                {
+                    session.Save(entity);
+                    tr.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tr.Rollback();
+                    throw ex;
+                }
             }
+        }
 
-            try
+        /// <summary>
+        /// Сохраняет сущность внутри внешней транзакции
+        /// </summary>
+        /// <param name="entity"></param>
+        public static void CreateEntityUnsave(T entity)
+        {
+            var session = NHibernateHelper.Instance.GetCurrentSession();
+            if (session == null)
             {
-                session.Save(entity);
-                transaction.Commit();
+                throw new Exception("Не удалось получить сессию Nhibernate");
             }
-            catch (Exception ex)
-            {
-                transaction.Rollback();
-                throw ex;
-            }
+            session.Save(entity);
         }
     }
 }

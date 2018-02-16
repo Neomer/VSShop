@@ -20,81 +20,96 @@ namespace Shop.Web.Controllers
 
         public ActionResult Create()
         {
-            var categoryParent = new ProductCategoryModel()
+            using (var transaction = NHibernateHelper.Instance.GetCurrentSession().BeginTransaction())
             {
-                ID = Guid.NewGuid(),
-                Name = "Удилища"
-            };
-            ProductCategoryManager.CreateEntity(categoryParent);
-            var category = new ProductCategoryModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Фидерные",
-                Parent = categoryParent
-            };
-            category = new ProductCategoryModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Спиннинговые",
-                Parent = categoryParent,
-                Specification = new SpinningRodCategorySpecification()
-            };
-            category = new ProductCategoryModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Маховые",
-                Parent = categoryParent
-            };
+                try
+                {
+                    var categoryParent = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Удилища"
+                    };
+                    ProductCategoryManager.CreateEntity(categoryParent);
+                    var category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Фидерные",
+                        Parent = categoryParent
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Спиннинговые",
+                        Parent = categoryParent,
+                        Specification = new SpinningRodCategorySpecification()
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    category = new ProductCategoryModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Маховые",
+                        Parent = categoryParent
+                    };
+                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
 
-            var product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_1",
-                Category = category,
-                Description = "Description for Product_1"
-            };
-            ProductManager.CreateEntity(product);
+                    var product = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Product_1",
+                        Category = category,
+                        Description = "Description for Product_1"
+                    };
+                    ProductManager.CreateEntityUnsave(product);
 
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_2",
-                Category = category,
-                Description = "Description for Product_2"
-            };
-            ProductManager.CreateEntity(product);
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_3",
-                Category = category,
-                Description = "Description for Product_3"
-            };
-            ProductManager.CreateEntity(product);
-            product = new ProductModel()
-            {
-                ID = Guid.NewGuid(),
-                Name = "Product_4",
-                Category = category,
-                Description = "Description for Product_4"
-            };
-            ProductManager.CreateEntity(product);
+                    product = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Product_2",
+                        Category = category,
+                        Description = "Description for Product_2"
+                    };
+                    ProductManager.CreateEntityUnsave(product);
+                    product = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Product_3",
+                        Category = category,
+                        Description = "Description for Product_3"
+                    };
+                    ProductManager.CreateEntityUnsave(product);
+                    product = new ProductModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = "Product_4",
+                        Category = category,
+                        Description = "Description for Product_4"
+                    };
+                    ProductManager.CreateEntityUnsave(product);
 
-            var cons = new ConsignmentModel()
-            {
-                ID = Guid.NewGuid(),
-                CreationDate = DateTime.Now
-            };
-            ConsignmentManager.CreateEntity(cons);
+                    var cons = new ConsignmentModel()
+                    {
+                        ID = Guid.NewGuid(),
+                        CreationDate = DateTime.Now
+                    };
+                    ConsignmentManager.CreateEntityUnsave(cons);
 
-            var consItem = new ConsignmentItemModel()
-            {
-                Product = product,
-                Cost = 25.23,
-                Count = 34,
-                Consignment = cons
-            };
-            ConsignmentItemManager.CreateEntity(consItem);
+                    var consItem = new ConsignmentItemModel()
+                    {
+                        Product = product,
+                        Cost = 25.23,
+                        Count = 34,
+                        Consignment = cons
+                    };
+                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+            }
 
             return RedirectToAction("Index");
         }
