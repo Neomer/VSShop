@@ -36,6 +36,10 @@
             rootElement.show();
         };
 
+        this.contentElement = function () {
+            return contentElement;
+        }
+
         this.close = function () {
             $(".popUp-blockscreen").hide();
             rootElement.hide();

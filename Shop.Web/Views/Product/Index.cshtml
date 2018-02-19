@@ -31,10 +31,16 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-3 inline-block">
+                                <label>Поставка</label>
+                            </div>
+                            <span><i>(Поставка не выбрана!)</i></span>
+                            <a href="javascript:DisplayConsignments('@Model.ID');">Выбрать поставку</a>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 inline-block">
                                 <label>Количество</label>
                             </div>
                             <input class="form-control inline-block small-number" type="number" value="0" id="txtCount" min="0" max="@Model.ItemsAvailable" />
-                            <a href="javascript:DisplayConsignments('@Model.ID');">Выбрать поставку</a>
                         </div>
                         <div class="row">
                             <div class="container-fluid no-padding">
@@ -88,9 +94,10 @@
 
         function DisplayConsignments(id)
         {
+            var productId = id;
             $.ajax({
                 method: "GET",
-                url: "@Url.Action("AjaxGetProductConsignments", "Consignment")?productId=" + id,
+                url: "@Url.Action("AjaxGetProductConsignments", "Consignment")?productId=" + productId,
                 dataType: 'json',
                 success: function(data)
                 {
@@ -99,16 +106,6 @@
                         PopUpWindow.open('Ошибка!', data.Message, "popUp-failed");
                         return;
                     }
-                    console.log(data);
-                    /*
-                    var str = '<thead><tr><th>#</th><th>Дата создания</th><th>Количество на складе</th><th>Цена</th></tr></thead>';
-                    for (var i = 0; i < data.Result.Items.length; i++)
-                    {
-                        str += '<tr><th scope="row" onclick="ApplyConsignment(\'' + data.Result.Items[i].ID + '\');">' + (i + 1) + '</th><td onclick="ApplyConsignment(\'' + data.Result.Items[i].ID + '\');">' + data.Result.Items[i].CreationDate + '</td><td onclick="ApplyConsignment(\'' + data.Result.Items[i].ID + '\');">' + data.Result.Items[i].Count + '</td>' + '</td><td onclick="ApplyConsignment(\'' + data.Result.Items[i].ID + '\');">' + data.Result.Items[i].Cost + '</td></tr>'
-                    }
-                    PopUpWindow.open('Выбрать поставку', '<table class="table table-hover">' + str + '</table>');
-                    */
-                    PopUpWindow.open('Выбрать поставку', '<div id="consignment_selection"></div>');
                     var json = {};
                     json = new Array();
                     var identity = new Array();
@@ -122,6 +119,7 @@
                         identity[i] = data.Result.Items[i].ID;
                     }
                     console.log(json);
+                    PopUpWindow.open('Выбрать поставку', '<div id="consignment_selection"></div>');
                     $("#consignment_selection").Table({
                         model: [
                             { name: "#", type: "number" },
@@ -133,9 +131,26 @@
                         identity: identity,
                         rowsPerPage: 15,
                         onRowSelect: function (instance, id) {
-                            console.log(id);
+                            PopUpWindow.close();
+                            console.log(productId);
+                            $.ajax({
+                                method: "GET",
+                                url: "@Url.Action("AjaxSelectConsignment", "Consignment")?consignmentId=" + id + "&productId=" + productId,
+                                dataType: 'json',
+                                success: function (data) {
+                                    console.log(data);
+                                    if (!data.Success) {
+                                        PopUpWindow.open('Ошибка!', data.Message, "popUp-failed");
+                                        return;
+                                    }
+
+                                }
+                            });
                         }
                     });
+                },
+                failed: function () {
+                    console.log('failed!');
                 }
             });
         }

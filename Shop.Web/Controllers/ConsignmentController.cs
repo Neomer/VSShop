@@ -1,5 +1,6 @@
 ﻿using Shop.SDK.Models.Managers;
 using Shop.Web.Managers;
+using Shop.Web.ViewModels;
 using Shop.Web.ViewModels.Ajax;
 using System;
 using System.Collections.Generic;
@@ -36,5 +37,26 @@ namespace Shop.Web.Controllers
                 )
             );
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult AjaxSelectConsignment(Guid consignmentId, Guid productId)
+        {
+            var product = ProductManager.GetById(productId);
+            if (product == null)
+            {
+                return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "Товар не найден!")));
+            }
+            var cons = product.Consignments.FirstOrDefault(_ => _.Consignment.ID == consignmentId);
+
+            return Content(
+                AjaxManager.SerializeAjaxAnswer(
+                    AjaxManager.CreateSuccessAjaxAnswer(
+                        new ProductConsignmentItemViewModel(cons)
+                    )
+                )
+            );
+        }
+        
     }
 }

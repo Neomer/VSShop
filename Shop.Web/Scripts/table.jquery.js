@@ -1,20 +1,10 @@
 ﻿(function ($) {
     $.fn.Table = function (options) {
         var settings = $.extend({
-            model: [
-                {
-                    name: "#",
-                    type: "number"
-                },
-                {
-                    name: "Name",
-                    type: "str",
-                    align: "right"
-                }
-            ],
+            model: [],
             rowsPerPage: 15,
-            data: [[1, "dfdf"], [2, "dfdfdfdf"]],
-            identity: [0, 1],
+            data: [],
+            identity: [],
             onRowSelect: null
         }, options);
 
