@@ -29,7 +29,6 @@
         }
 
         this.displayPage = function (page) {
-            console.log(page);
             if (page >= settings.data.length / settings.rowsPerPage) return;
             rootElement.find(".shop-table > tbody").remove();
 
