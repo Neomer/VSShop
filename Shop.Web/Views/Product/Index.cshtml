@@ -108,7 +108,7 @@
                     }
                     PopUpWindow.open('Выбрать поставку', '<table class="table table-hover">' + str + '</table>');
                     */
-                    PopUpWindow.open('Выбрать поставку', '<table id="consignment_selection"></div>');
+                    PopUpWindow.open('Выбрать поставку', '<div id="consignment_selection"></div>');
                     var json = {};
                     json = new Array();
                     var identity = new Array();
@@ -126,11 +126,12 @@
                         model: [
                             { name: "#", type: "number" },
                             { name: "Дата создания", type: "datetime" },
-                            { name: "Количество на складе", type: "number" },
+                            { name: "Количество на складе", type: "number", align: "center" },
                             { name: "Цена", type: "number" }
                         ],
                         data: json,
                         identity: identity,
+                        rowsPerPage: 15,
                         onRowSelect: function (instance, id) {
                             console.log(id);
                         }

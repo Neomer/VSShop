@@ -19,3 +19,33 @@
     border-bottom: 1px solid #eeeeee;
 }
 
+.shop-table > tbody > tr > td.center {
+    text-align: center;
+}
+
+.shop-table > tbody > tr > td.left {
+    text-align: left;
+}
+
+.shop-table > tbody > tr > td.right {
+    text-align: right;
+}
+
+.shop-table-nav {
+    width: 100%;
+    text-align: right;
+}
+
+.shop-table-nav > span {
+    padding: 1px 3px 1px 3px;
+    cursor: pointer;
+}
+
+.shop-table-nav > span:hover {
+    text-decoration:underline
+}
+
+.shop-table-nav > span.selected {
+    text-decoration: underline;
+    cursor: default;
+}
