@@ -34,7 +34,7 @@
                                 <label>Количество</label>
                             </div>
                             <input class="form-control inline-block small-number" type="number" value="0" id="txtCount" min="0" max="@Model.ItemsAvailable" />
-                            <label>На складе: </label> <span>@Model.ItemsAvailable</span>
+                            <a href="javascript:DisplayConsignments('@Model.ID');">Выбрать поставку</a>
                         </div>
                         <div class="row">
                             <div class="container-fluid no-padding">
@@ -82,6 +82,30 @@
                 success: function(data)
                 {
                     PopUpWindow.open('Добавление в корзину', data.Message, ((data.Success) ? "popUp-success" : "popUp-failed"));
+                }
+            });
+        }
+
+        function DisplayConsignments(id)
+        {
+            $.ajax({
+                method: "GET",
+                url: "@Url.Action("AjaxGetProductConsignments", "Consignment")?productId=" + id,
+                dataType: 'json',
+                success: function(data)
+                {
+                    if (!data.Success)
+                    {
+                        PopUpWindow.open('Ошибка!', data.Message, "popUp-failed");
+                        return;
+                    }
+                    console.log(data);
+                    var str = '<thead><tr><th>#</th><th>Дата создания</th><th>Количество на складе</th><th>Цена</th></tr></thead>';
+                    for (var i = 0; i < data.Result.Items.length; i++)
+                    {
+                        str += '<tr><th scope="row">' + (i + 1) + '</th><td>' + data.Result.Items[i].CreationDate + '</td><td>' + data.Result.Items[i].Count + '</td>' + '</td><td>' + data.Result.Items[i].Cost + '</td></tr>'
+                    }
+                    PopUpWindow.open('Выбрать поставку', '<table class="table table-hover">' + str + '</table>');
                 }
             });
         }

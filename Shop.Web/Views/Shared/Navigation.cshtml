@@ -6,6 +6,9 @@
 {
 
     <ul>
+        @{ 
+            list = list.OrderBy(x => x.Name);
+        }
         @foreach (var item in list)
         {
             <li>
@@ -16,7 +19,7 @@
                 else
                 {
                     <a href="#">@item.Name</a>
-                    @ShowTreeNode(item.SubCategories)
+                    @ShowTreeNode(item.SubCategories.OrderBy(x => x.Name))
                 }
             </li>
         }

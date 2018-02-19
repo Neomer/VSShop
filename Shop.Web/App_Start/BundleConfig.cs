@@ -22,6 +22,7 @@ namespace Shop.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
+                      "~/Scripts/DataTables/jquery.dataTables.min.js",
                       "~/Scripts/popup.jquery.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
