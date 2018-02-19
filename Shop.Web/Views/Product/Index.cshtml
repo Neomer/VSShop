@@ -81,7 +81,7 @@
             if (count <= 0) return;
             $.ajax({
                 method: "GET",
-                url: "@Url.Action("AjaxAddProduct", "Basket")?product=" + id + "&count=" + count,
+                url: "@Url.Action("AjaxAddProduct", "Basket")?productId=" + id + "&count=" + count,
                 success: function(data)
                 {
                     console.log(data);

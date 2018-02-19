@@ -48,6 +48,12 @@
       <key column="ProductID"/>
       <one-to-many class="ProductVariantModel"/>
     </bag>
+    <bag name="Consignments">
+      <key>
+        <column name="ProductID"></column>
+      </key>
+      <one-to-many class="ConsignmentItemModel"/>
+    </bag>
   </class>
 
   <class name="ProductVariantModel" table="ProductVariant" dynamic-update="true" >

@@ -16,5 +16,6 @@ namespace Shop.SDK.Models
         public virtual string Image { get; set; }
 
         public virtual IList<ProductVariantModel> Variants { get; set; }
+        public virtual IEnumerable<ConsignmentItemModel> Consignments { get; set; }
     }
 }

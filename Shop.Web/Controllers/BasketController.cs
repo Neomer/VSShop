@@ -22,7 +22,7 @@ namespace Shop.Web.Controllers
 
         [Authorize]
         [HttpGet]
-        public ActionResult AjaxAddProduct(Guid product, double count)
+        public ActionResult AjaxAddProduct(Guid productId, double count)
         {
             Guid uid = Guid.Empty;
             if (!Guid.TryParse(User.Identity.Name, out uid))
@@ -38,6 +38,11 @@ namespace Shop.Web.Controllers
             if (basket == null)
             {
                 basket = BasketManager.CreateBasterForUser(user);
+            }
+            var product = ProductManager.GetById(productId);
+            if (product == null)
+            {
+                return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "Product not found!")));
             }
             return Content(
                 AjaxManager.SerializeAjaxAnswer(

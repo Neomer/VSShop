@@ -21,5 +21,22 @@ namespace Shop.SDK.Models.Managers
                 .Add(Expression.Eq("Category", category))
                 .List<ProductModel>();
         }
+
+        public static double GetProductRemain(ProductModel product)
+        {
+            var session = NHibernateHelper.Instance.GetCurrentSession();
+            try
+            {
+                ConsignmentItemModel cons = null;
+
+                var ret = session.QueryOver<ProductModel>()
+                    .Left.JoinAlias(x => x.Consignments, () => cons)
+                    .List<ProductModel>();
+            }
+            catch (Exception ex)
+            { }
+
+            return 0;
+        }
     }
 }

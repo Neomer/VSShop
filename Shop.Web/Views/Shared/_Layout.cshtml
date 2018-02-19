@@ -47,6 +47,22 @@
         <footer>
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
+        <div class="popUp-blockscreen"></div>
+        <div class="popUp">
+            <div class="popUp-header">
+                <span></span> 
+                <div class="popUp-close"><img src="/Resources/Images/close-button.png" /></div>
+            </div>
+            <div class="popUp-body">
+                Body
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var popUpwindow = $(".popUp").Popup();
+                popUpwindow.open('Window Title', '<b>Hi all</b><br />sdvdfsv sdfv dfsv sdg43tq34t vsr sdfv dfv34q<br />gvsdfvsdvdfsv sdfv dfsv sdg43tq34t vsr sdfv dfv34q gvsdfv');
+            });
+        </script>
     </div>
 
 </body>
