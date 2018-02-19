@@ -1,0 +1,21 @@
+﻿.shop-table {
+    width: 100%;
+}
+
+.shop-table > thead > th {
+    font-weight: bold;
+    text-align: center;
+    padding: 3px 10px 3px 10px;
+    border-bottom: 2px solid #eeeeee;
+}
+
+.shop-table.hoverable > tbody > tr:hover {
+    background-color: #9dd19f;
+    cursor: pointer;
+}
+
+.shop-table > tbody > tr > td {
+    padding: 3px 10px 3px 10px;
+    border-bottom: 1px solid #eeeeee;
+}
+

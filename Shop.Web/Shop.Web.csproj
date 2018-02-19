@@ -313,6 +313,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\table.jquery.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -433,6 +434,7 @@
     <Content Include="Scripts\popup.jquery.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\table.jquery.js" />
     <Content Include="Scripts\tree.jquery.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

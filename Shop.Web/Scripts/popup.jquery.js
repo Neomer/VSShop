@@ -48,7 +48,6 @@
             });
             rootElement
                 .find(".popUp-header > .popUp-close > img").click(function () {
-                console.log('click');
                 instance.close();
             });
         });
