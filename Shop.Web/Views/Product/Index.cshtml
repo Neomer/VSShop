@@ -71,10 +71,6 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(document).ready(function () {
-            //$("#txtCount").
-        });
-
         function AddProductToBasket(id)
         {
             var count = $("#txtCount").val();
@@ -82,9 +78,10 @@
             $.ajax({
                 method: "GET",
                 url: "@Url.Action("AjaxAddProduct", "Basket")?productId=" + id + "&count=" + count,
+                dataType: 'json',
                 success: function(data)
                 {
-                    console.log(data);
+                    PopUpWindow.open('Добавление в корзину', data.Message, ((data.Success) ? "popUp-success" : "popUp-failed"));
                 }
             });
         }

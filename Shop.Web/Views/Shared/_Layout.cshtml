@@ -53,14 +53,12 @@
                 <span></span> 
                 <div class="popUp-close"><img src="/Resources/Images/close-button.png" /></div>
             </div>
-            <div class="popUp-body">
-                Body
-            </div>
+            <div class="popUp-body"></div>
         </div>
         <script type="text/javascript">
+            var PopUpWindow = null;
             $(document).ready(function () {
-                var popUpwindow = $(".popUp").Popup();
-                popUpwindow.open('Window Title', '<b>Hi all</b><br />sdvdfsv sdfv dfsv sdg43tq34t vsr sdfv dfv34q<br />gvsdfvsdvdfsv sdfv dfsv sdg43tq34t vsr sdfv dfv34q gvsdfv');
+                PopUpWindow = $(".popUp").Popup();
             });
         </script>
     </div>
