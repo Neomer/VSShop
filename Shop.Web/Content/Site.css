@@ -117,7 +117,8 @@ input.small-number {
     margin: auto;
     text-align: center;
     border-radius: 1px 1px;
-    background-color: #aeaeae;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 14px;
@@ -148,5 +149,6 @@ input.small-number {
 }
 
 .popUp-default {
-    background-color: #373d42;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
 }
