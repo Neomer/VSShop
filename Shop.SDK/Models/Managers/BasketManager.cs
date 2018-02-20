@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Shop.SDK.Models.Managers
 {
-    public class BasketManager : BaseManager<BasketModel>
+    public class BasketManager : BaseManager
     {
         /// <summary>
         /// Возвращает корзины, созданные для пользователя
@@ -28,7 +28,6 @@ namespace Shop.SDK.Models.Managers
         public static BasketModel CreateBasterForUser(UserModel user)
         {
             var basket = new BasketModel() { ID = Guid.NewGuid(), CreationDate = DateTime.Now, User = user };
-            BasketManager.CreateEntity(basket);
             return basket;
         }
     }

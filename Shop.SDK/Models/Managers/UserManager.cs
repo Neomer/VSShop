@@ -9,7 +9,7 @@ using Shop.SDK.Core;
 
 namespace Shop.SDK.Models.Managers
 {
-    public abstract class UserManager : BaseManager<UserModel>
+    public class UserManager : BaseManager
     {
         public static UserModel GetUserByLoginPassword(string email, string password)
         {

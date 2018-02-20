@@ -7,39 +7,15 @@ using System.Web;
 
 namespace Shop.SDK.Models.Managers
 {
-    public abstract class BaseManager<T> where T:BaseEntity
+    public abstract class BaseManager : IEntityManager
     {
-        /// <summary>
-        /// Вовзращает список всех сущностей
-        /// </summary>
-        /// <returns></returns>
-        public static IEnumerable<T> GetAll()
-        {
-            return NHibernateHelper.Instance.GetCurrentSession().CreateCriteria(typeof(T)).List<T>();
-        }
-
-        /// <summary>
-        /// Возвращает сущность по ее идентификатору
-        /// </summary>
-        /// <param name="id">Идентификатор сущности</param>
-        /// <returns></returns>
-        public static T GetById(Guid id)
-        {
-            return NHibernateHelper.Instance.GetCurrentSession().Get<T>(id);
-        }
-
-        /// <summary>
-        /// Создает сущность внутри собственной транзакции
-        /// </summary>
-        /// <param name="entity"></param>
-        public static void CreateEntity(T entity)
+        void IEntityManager.CreateEntity<T>(T entity)
         {
             var session = NHibernateHelper.Instance.GetCurrentSession();
             if (session == null)
             {
-                throw new Exception("Не удалось получить сессию Nhibernate");
+                throw new Exception("Сессия не инициализирована!");
             }
-
             using (var tr = session.BeginTransaction())
             {
                 try
@@ -55,18 +31,35 @@ namespace Shop.SDK.Models.Managers
             }
         }
 
-        /// <summary>
-        /// Сохраняет сущность внутри внешней транзакции
-        /// </summary>
-        /// <param name="entity"></param>
-        public static void CreateEntityUnsave(T entity)
+        void IEntityManager.CreateEntityUnsave<T>(T entity)
         {
             var session = NHibernateHelper.Instance.GetCurrentSession();
             if (session == null)
             {
-                throw new Exception("Не удалось получить сессию Nhibernate");
+                throw new Exception("Сессия не инициализирована!");
             }
             session.Save(entity);
+        }
+
+        IEnumerable<T> IEntityManager.GetAll<T>()
+        {
+            var session = NHibernateHelper.Instance.GetCurrentSession();
+            if (session == null)
+            {
+                throw new Exception("Сессия не инициализирована!");
+            }
+            return session.CreateCriteria<T>()
+                .List<T>();
+        }
+
+        T IEntityManager.GetById<T>(Guid id)
+        {
+            var session = NHibernateHelper.Instance.GetCurrentSession();
+            if (session == null)
+            {
+                throw new Exception("Сессия не инициализирована!");
+            }
+            return session.Get<T>(id);
         }
     }
 }

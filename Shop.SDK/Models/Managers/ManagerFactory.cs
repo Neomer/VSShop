@@ -30,31 +30,5 @@ namespace Shop.SDK.Models.Managers
         #endregion
 
         private bool _loaded;
-        List<BaseManager<BaseEntity>> _managers;
-
-        private ManagerFactory()
-        {
-            _managers = new List<BaseManager<BaseEntity>>();
-            _loaded = false;
-        }
-
-        public static void Load()
-        {
-            if (Instance._loaded) return;
-
-            Instance.RegisterManager(null);
-
-            Instance._loaded = true;
-        }
-
-        public void RegisterManager(BaseManager<BaseEntity> manager)
-        {
-            _managers.Add(manager);
-        }
-
-        public BaseManager<BaseEntity> GetManager(Type type)
-        {
-            return null;
-        }
     }
 }
