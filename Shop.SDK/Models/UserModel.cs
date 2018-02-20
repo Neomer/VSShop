@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Модель данных для сущности пользователя. Используется для регистрации, авторизации, аутентификации.
     /// </summary>
-    public class UserModel : BaseEntity
+    public class UserModel : IEntity
     {
         /// <summary>
         /// E-Mail
@@ -34,5 +34,7 @@ namespace Shop.SDK.Models
         /// Корзины, созданные для пользователя
         /// </summary>
         public virtual IList<BasketModel> Baskets { get; set; }
+
+        public virtual Guid ID { get; set; }
     }
 }

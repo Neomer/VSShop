@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Категория к которой относится товар
     /// </summary>
-    public class ProductCategoryModel : BaseEntity
+    public class ProductCategoryModel : IEntity
     {
         public virtual string Name { get; set; }
         public virtual ProductCategoryModel Parent { get; set; }
@@ -23,5 +23,6 @@ namespace Shop.SDK.Models
 
         public virtual IList<ProductModel> Products { get; set; }
         public virtual IList<ProductCategoryModel> SubCategories { get; set; }
+        public virtual Guid ID { get; set; }
     }
 }

@@ -8,8 +8,9 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Элемент партии
     /// </summary>
-    public class ConsignmentItemModel : BaseEntity
+    public class ConsignmentItemModel : IEntity
     {
+        public virtual Guid ID { get; set; }
         /// <summary>
         /// Продукт
         /// </summary>

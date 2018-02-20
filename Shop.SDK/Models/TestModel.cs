@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Shop.SDK.Models
 {
-    public class BaseEntity : IIdentifyed
+    public class TestModel : BaseEntity
     {
 
     }

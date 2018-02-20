@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Модель для представления партии
     /// </summary>
-    public class ConsignmentModel : BaseEntity
+    public class ConsignmentModel : IEntity
     {
         /// <summary>
         /// Дата поступления
@@ -17,6 +17,7 @@ namespace Shop.SDK.Models
         /// <summary>
         /// Позиции партии
         /// </summary>
-        public virtual IList<ConsignmentItemModel> Items { get; set; }        
+        public virtual IList<ConsignmentItemModel> Items { get; set; }
+        public virtual Guid ID { get; set; }
     }
 }

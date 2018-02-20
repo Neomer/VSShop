@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Товар
     /// </summary>
-    public class ProductModel : BaseEntity
+    public class ProductModel : IEntity
     {
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
@@ -17,5 +17,6 @@ namespace Shop.SDK.Models
 
         public virtual IList<ProductVariantModel> Variants { get; set; }
         public virtual IEnumerable<ConsignmentItemModel> Consignments { get; set; }
+        public virtual Guid ID { get; set; }
     }
 }

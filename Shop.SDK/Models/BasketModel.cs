@@ -8,8 +8,9 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Корзина с товарами
     /// </summary>
-    public class BasketModel : BaseEntity
+    public class BasketModel : IEntity
     {
+        public virtual Guid ID { get; set; }
         /// <summary>
         /// Пользователь-владелец корзины
         /// </summary>

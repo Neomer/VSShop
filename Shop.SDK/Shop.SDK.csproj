@@ -94,7 +94,6 @@
     <Compile Include="Core\IWebEditor.cs" />
     <Compile Include="Core\NHibernateHelper.cs" />
     <Compile Include="Core\Range.cs" />
-    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\BasketItemModel.cs" />
     <Compile Include="Models\BasketModel.cs" />
     <Compile Include="Models\ConsignmentItemModel.cs" />
@@ -105,6 +104,8 @@
     <Compile Include="Models\Managers\BasketManager.cs" />
     <Compile Include="Models\Managers\ConsignmentItemManager.cs" />
     <Compile Include="Models\Managers\ConsignmentManager.cs" />
+    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\Managers\IEntityManager.cs" />
     <Compile Include="Models\Managers\ManagerFactory.cs" />
     <Compile Include="Models\Managers\ProductCategoryManager.cs" />
     <Compile Include="Models\Managers\ProductManager.cs" />

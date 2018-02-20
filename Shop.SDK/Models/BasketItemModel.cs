@@ -8,7 +8,7 @@ namespace Shop.SDK.Models
     /// <summary>
     /// Элемент корзины
     /// </summary>
-    public class BasketItemModel : BaseEntity
+    public class BasketItemModel : IEntity
     {
         /// <summary>
         /// Корзина
@@ -22,5 +22,6 @@ namespace Shop.SDK.Models
         /// Количество товара
         /// </summary>
         public virtual double Count { get; set; }
+        public virtual Guid ID { get; set; }
     }
 }
