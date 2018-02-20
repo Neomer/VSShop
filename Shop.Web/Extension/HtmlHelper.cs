@@ -55,5 +55,10 @@ namespace Shop.Web.Extension
             var ret = model.GetType().GetProperties();
             return "";
         }
+
+        public static IHtmlString EntityEditor<BaseEntity, TProperty>(this HtmlHelper<BaseEntity> htmlHelper, Expression<Func<BaseEntity, TProperty>> ex, object htmlAttributes = null)
+        {
+            return MvcHtmlString.Create("<div class\"entity-editor\"><span>" + ex.GetType().ToString() + "</span></div>");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Shop.SDK.Core;
+using Shop.SDK.Models.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

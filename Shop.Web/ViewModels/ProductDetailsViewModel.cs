@@ -24,6 +24,7 @@ namespace Shop.Web.ViewModels
             Description = model.Description;
             var cons = ConsignmentItemManager.GetByProduct(model).FirstOrDefault();
             ItemsAvailable = (cons == null) ? 0 : cons.Count;
+            Consignment = model.Consignments.FirstOrDefault();
         }
 
         [Display(Name = "Идентификатор")]
@@ -46,5 +47,8 @@ namespace Shop.Web.ViewModels
 
         [Display(Name = "Кол-во на складе")]
         public double ItemsAvailable { get; set; }
+
+        [Display(Name = "Поставка")]
+        public ConsignmentItemModel Consignment { get; set; }
     }
 }

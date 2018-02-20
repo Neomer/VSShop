@@ -50,6 +50,7 @@
             $(".popUp-blockscreen").click(function () {
                 instance.close();
             });
+            
             rootElement
                 .find(".popUp-header > .popUp-close > img").click(function () {
                 instance.close();

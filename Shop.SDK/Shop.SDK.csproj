@@ -105,6 +105,7 @@
     <Compile Include="Models\Managers\BasketManager.cs" />
     <Compile Include="Models\Managers\ConsignmentItemManager.cs" />
     <Compile Include="Models\Managers\ConsignmentManager.cs" />
+    <Compile Include="Models\Managers\ManagerFactory.cs" />
     <Compile Include="Models\Managers\ProductCategoryManager.cs" />
     <Compile Include="Models\Managers\ProductManager.cs" />
     <Compile Include="Models\Managers\UserManager.cs" />

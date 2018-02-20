@@ -35,6 +35,7 @@
                             </div>
                             <span><i>(Поставка не выбрана!)</i></span>
                             <a href="javascript:DisplayConsignments('@Model.ID');">Выбрать поставку</a>
+                            @Html.EntityEditor(model => model.Consignment)
                         </div>
                         <div class="form-group row">
                             <div class="col-md-3 inline-block">

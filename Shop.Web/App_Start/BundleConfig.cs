@@ -24,12 +24,15 @@ namespace Shop.Web
                       "~/Scripts/respond.js",
                       "~/Scripts/DataTables/jquery.dataTables.min.js",
                       "~/Scripts/popup.jquery.js",
-                      "~/Scripts/table.jquery.js"));
+                      "~/Scripts/table.jquery.js",
+                      "~/Scripts/jquery-ui.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/table.jquery.css"));
+                      "~/Content/table.jquery.css",
+                      "~/Content/jquery-ui.min.css",
+                      "~/Content/jquery-ui.structure.min.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                       "~/Scripts/jquery.validate*"));
