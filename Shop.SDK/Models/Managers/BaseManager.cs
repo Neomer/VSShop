@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Shop.SDK.Models.Managers
 {
-    public abstract class BaseManager<T> where T:BaseEntity
+    public abstract class BaseManager<T> where T:IIdentifyed
     {
         /// <summary>
         /// Вовзращает список всех сущностей

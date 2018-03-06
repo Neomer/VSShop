@@ -19,6 +19,8 @@ namespace Shop.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             NHibernateHelper.Instance.OpenSession();
+
+            ManagerFactory.Instance.RegisterManager(UserManager));
         }
     }
 }
