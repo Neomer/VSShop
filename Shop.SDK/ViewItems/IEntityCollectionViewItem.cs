@@ -9,6 +9,6 @@ namespace Shop.SDK.ViewItems
 {
     public interface IEntityCollectionViewItem : ICollectionViewItem<IEntity>, IViewItem
     {
-        
+        Type EntityType { get; }
     }
 }

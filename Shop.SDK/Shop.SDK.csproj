@@ -113,6 +113,8 @@
     <Compile Include="Models\IProductCategorySpecification.cs" />
     <Compile Include="Models\Managers\AbstractManager.cs" />
     <Compile Include="Models\Managers\IManager.cs" />
+    <Compile Include="ViewItems\EntityCollectionViewItem.cs" />
+    <Compile Include="ViewItems\ICollectionViewItem.cs" />
     <Compile Include="ViewItems\IEntityCollectionViewItem.cs" />
     <Compile Include="ViewItems\IViewItem.cs" />
     <Compile Include="Models\Managers\BasketItemManager.cs" />
