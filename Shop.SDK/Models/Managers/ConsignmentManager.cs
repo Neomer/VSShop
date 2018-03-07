@@ -9,7 +9,7 @@ namespace Shop.SDK.Models.Managers
     /// <summary>
     /// Менеджер для работы с партиями товаров
     /// </summary>
-    public class ConsignmentManager : BaseManager<ConsignmentModel>
+    public class ConsignmentManager : AbstractManager<ConsignmentModel>
     {
     }
 }

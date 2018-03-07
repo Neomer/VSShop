@@ -14,7 +14,7 @@ namespace Shop.Web.Controllers
         // GET: Category
         public ActionResult Index(Guid id)
         {
-            var category = ProductCategoryManager.GetById(id);
+            var category = ManagerFactory.Instance.GetManager<ProductCategoryManager>().GetById(id) as ProductCategoryModel;
             var list = new List<ProductDetailsViewModel>();
             foreach (var p in category.Products)
             {

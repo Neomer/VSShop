@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Shop.SDK.Models
 {
-    public interface IIdentifyed
+    public interface IEntity : IIdentifyed
     {
-        Guid ID { get; set; } 
     }
 }

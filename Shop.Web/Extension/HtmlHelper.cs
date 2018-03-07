@@ -24,7 +24,7 @@ namespace Shop.Web.Extension
 
         public static MvcHtmlString CreateNavigationTree(this HtmlHelper helper)
         {
-            var top = ProductCategoryManager.GetTopLevel();
+            var top = ManagerFactory.Instance.GetManager<ProductCategoryManager>().GetTopLevel();
             var rootElement = new TagBuilder("ul");
             rootElement.AddCssClass("nav");
             foreach (var item in top)

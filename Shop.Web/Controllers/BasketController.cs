@@ -29,17 +29,17 @@ namespace Shop.Web.Controllers
             {
                 return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "User not found!")));
             }
-            var user = UserManager.GetById(uid);
+            UserModel user = ManagerFactory.Instance.GetManager<UserManager>().GetById(uid) as UserModel;
             if (user == null)
             {
                 return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "User not found!")));
             }
-            var basket = BasketManager.GetBasketByUser(user).FirstOrDefault();
+            var basket = ManagerFactory.Instance.GetManager<BasketManager>().GetBasketByUser(user).FirstOrDefault();
             if (basket == null)
             {
-                basket = BasketManager.CreateBasterForUser(user);
+                basket = ManagerFactory.Instance.GetManager<BasketManager>().CreateBasketForUser(user);
             }
-            var product = ProductManager.GetById(productId);
+            var product = ManagerFactory.Instance.GetManager<ProductManager>().GetById(productId);
             if (product == null)
             {
                 return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "Product not found!")));

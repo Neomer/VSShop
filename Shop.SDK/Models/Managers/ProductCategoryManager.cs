@@ -11,13 +11,13 @@ namespace Shop.SDK.Models.Managers
     /// <summary>
     /// Менеджер для обслуживания категорий товаров
     /// </summary>
-    public class ProductCategoryManager : BaseManager<ProductCategoryModel>
+    public class ProductCategoryManager : AbstractManager<ProductCategoryModel>
     {
         /// <summary>
         /// Возвращает список всех категорий верхнего уровня
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<ProductCategoryModel> GetTopLevel()
+        public IEnumerable<ProductCategoryModel> GetTopLevel()
         {
             return NHibernateHelper.Instance.GetCurrentSession().CreateCriteria<ProductCategoryModel>()
                 .Add(Expression.Eq("Parent", null))

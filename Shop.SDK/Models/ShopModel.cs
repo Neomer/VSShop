@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Shop.SDK.Models
 {
-    public class ShopModel
+    public class ShopModel : IEntity
     {
+        public virtual Guid ID { get; set; }
     }
 }

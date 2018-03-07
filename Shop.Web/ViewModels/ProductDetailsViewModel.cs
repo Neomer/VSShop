@@ -22,7 +22,7 @@ namespace Shop.Web.ViewModels
             Name = model.Name;
             Category = model.Category;
             Description = model.Description;
-            var cons = ConsignmentItemManager.GetByProduct(model).FirstOrDefault();
+            var cons = ManagerFactory.Instance.GetManager<ConsignmentItemManager>().GetByProduct(model).FirstOrDefault();
             ItemsAvailable = (cons == null) ? 0 : cons.Count;
             Consignment = model.Consignments.FirstOrDefault();
         }

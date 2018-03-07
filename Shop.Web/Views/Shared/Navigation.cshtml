@@ -26,4 +26,4 @@
     </ul>
 }
 
-@ShowTreeNode(ProductCategoryManager.GetTopLevel())
+@ShowTreeNode(ManagerFactory.Instance.GetManager<ProductCategoryManager>().GetTopLevel())

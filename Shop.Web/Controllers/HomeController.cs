@@ -52,14 +52,14 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         Name = "Удилища"
                     };
-                    ProductCategoryManager.CreateEntityUnsave(categoryParent);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(categoryParent);
                     var category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
                         Name = "Фидерные",
                         Parent = categoryParent
                     };
-                    ProductCategoryManager.CreateEntityUnsave(category);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(category);
                     category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
@@ -67,14 +67,14 @@ namespace Shop.Web.Controllers
                         Parent = categoryParent,
                         Specification = null
                     };
-                    ProductCategoryManager.CreateEntityUnsave(category);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(category);
                     category = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
                         Name = "Маховые",
                         Parent = categoryParent
                     };
-                    ProductCategoryManager.CreateEntityUnsave(category);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(category);
                     #endregion
 
                     #region Категория "Приманки"
@@ -83,7 +83,7 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         Name = "Приманки"
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catBaits);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catBaits);
 
                     var catSpoons = new ProductCategoryModel()
                     {
@@ -91,7 +91,7 @@ namespace Shop.Web.Controllers
                         Name = "Блесны",
                         Parent = catBaits
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catSpoons);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catSpoons);
 
                     var catWaveringSpoon = new ProductCategoryModel()
                     {
@@ -99,7 +99,7 @@ namespace Shop.Web.Controllers
                         Name = "Колеблющиеся",
                         Parent = catSpoons
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catWaveringSpoon);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catWaveringSpoon);
 
                     var catRotatingSpoon = new ProductCategoryModel()
                     {
@@ -107,7 +107,7 @@ namespace Shop.Web.Controllers
                         Name = "Вращающиеся",
                         Parent = catSpoons
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catRotatingSpoon);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catRotatingSpoon);
 
                     var catWobblers = new ProductCategoryModel()
                     {
@@ -116,14 +116,14 @@ namespace Shop.Web.Controllers
                         Parent = catBaits,
                         Specification = null
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catWobblers);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catWobblers);
                     var catTwisters = new ProductCategoryModel()
                     {
                         ID = Guid.NewGuid(),
                         Name = "Силиконовые приманки",
                         Parent = catBaits
                     };
-                    ProductCategoryManager.CreateEntityUnsave(catTwisters);
+                    ManagerFactory.Instance.GetManager<ProductCategoryManager>().SaveEntity(catTwisters);
                     #endregion
 
                     #region Товары для категории Воблеры
@@ -134,7 +134,7 @@ namespace Shop.Web.Controllers
                         Category = catWobblers,
                         Description = "Bearking Tungsten balls long casting 10cm 17.5g New model fishing lures hard bait dive 1.8m minnow,quality professional minnow"
                     };
-                    ProductManager.CreateEntityUnsave(productTungsten);
+                    ManagerFactory.Instance.GetManager<ProductManager>().SaveEntity(productTungsten);
 
                     var productSparrow = new ProductModel()
                     {
@@ -143,7 +143,7 @@ namespace Shop.Web.Controllers
                         Category = catWobblers,
                         Description = "Bearking A+ 2017 hot model fishing lures hard bait 7color for choose 10cm 15g minnow,quality professional minnow depth0.8-1.5m"
                     };
-                    ProductManager.CreateEntityUnsave(productSparrow);
+                    ManagerFactory.Instance.GetManager<ProductManager>().SaveEntity(productSparrow);
                     var productPlusOne = new ProductModel()
                     {
                         ID = Guid.NewGuid(),
@@ -151,7 +151,7 @@ namespace Shop.Web.Controllers
                         Category = catWobblers,
                         Description = "Great Discount!Retail fishing lures,assorted colors quality Minnow 110mm 14g,Tungsten ball bearking 2017 model crank bait"
                     };
-                    ProductManager.CreateEntityUnsave(productPlusOne);
+                    ManagerFactory.Instance.GetManager<ProductManager>().SaveEntity(productPlusOne);
                     #endregion
 
                     #region Поставки для товаров категории "Воблеры"
@@ -161,7 +161,7 @@ namespace Shop.Web.Controllers
                         ID = Guid.NewGuid(),
                         CreationDate = DateTime.Now
                     };
-                    ConsignmentManager.CreateEntityUnsave(cons);
+                    ManagerFactory.Instance.GetManager<ConsignmentManager>().SaveEntity(cons);
 
                     var consItem = new ConsignmentItemModel()
                     {
@@ -170,14 +170,14 @@ namespace Shop.Web.Controllers
                         Count = random.Next() % 100,
                         Consignment = cons
                     };
-                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+                    ManagerFactory.Instance.GetManager<ConsignmentItemManager>().SaveEntity(consItem);
 
                     cons = new ConsignmentModel()
                     {
                         ID = Guid.NewGuid(),
                         CreationDate = DateTime.Now
                     };
-                    ConsignmentManager.CreateEntityUnsave(cons);
+                    ManagerFactory.Instance.GetManager<ConsignmentManager>().SaveEntity(cons);
 
                     consItem = new ConsignmentItemModel()
                     {
@@ -186,14 +186,14 @@ namespace Shop.Web.Controllers
                         Count = random.Next() % 100,
                         Consignment = cons
                     };
-                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+                    ManagerFactory.Instance.GetManager<ConsignmentItemManager>().SaveEntity(consItem);
 
                     cons = new ConsignmentModel()
                     {
                         ID = Guid.NewGuid(),
                         CreationDate = DateTime.Now
                     };
-                    ConsignmentManager.CreateEntityUnsave(cons);
+                    ManagerFactory.Instance.GetManager<ConsignmentManager>().SaveEntity(cons);
                     consItem = new ConsignmentItemModel()
                     {
                         Product = productSparrow,
@@ -201,7 +201,7 @@ namespace Shop.Web.Controllers
                         Count = random.Next() % 100,
                         Consignment = cons
                     };
-                    ConsignmentItemManager.CreateEntityUnsave(consItem);
+                    ManagerFactory.Instance.GetManager<ConsignmentItemManager>().SaveEntity(consItem);
                     #endregion
 
                     transaction.Commit();

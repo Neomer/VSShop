@@ -1,4 +1,5 @@
 ﻿using Shop.SDK.Core;
+using Shop.SDK.Models;
 using Shop.SDK.Models.Managers;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ namespace Shop.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             NHibernateHelper.Instance.OpenSession();
 
-            ManagerFactory.Instance.RegisterManager(UserManager));
         }
     }
 }

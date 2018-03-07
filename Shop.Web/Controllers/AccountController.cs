@@ -27,7 +27,7 @@ namespace Shop.Web.Controllers
                 UserModel user = null;
                 try
                 {
-                    user = UserManager.GetUserByLoginPassword(model.Email, model.Password);
+                    user = ManagerFactory.Instance.GetManager<UserManager>().GetUserByLoginPassword(model.Email, model.Password);
                 }
                 catch (Exception ex)
                 {
@@ -67,7 +67,7 @@ namespace Shop.Web.Controllers
                 };
                 try
                 {
-                    UserManager.CreateEntity(user);
+                    ManagerFactory.Instance.GetManager<UserManager>().CreateEntity(user);
                 }
                 catch (Exception ex)
                 {

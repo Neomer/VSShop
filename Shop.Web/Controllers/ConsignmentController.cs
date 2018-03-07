@@ -1,4 +1,5 @@
-﻿using Shop.SDK.Models.Managers;
+﻿using Shop.SDK.Models;
+using Shop.SDK.Models.Managers;
 using Shop.Web.Managers;
 using Shop.Web.ViewModels;
 using Shop.Web.ViewModels.Ajax;
@@ -22,12 +23,12 @@ namespace Shop.Web.Controllers
         [HttpGet]
         public ActionResult AjaxGetProductConsignments(Guid productId)
         {
-            var product = ProductManager.GetById(productId);
+            var product = ManagerFactory.Instance.GetManager<ProductManager>().GetById(productId) as ProductModel;
             if (product == null)
             {
                 return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "Товар не найден!")));
             }
-            var cons = ConsignmentItemManager.GetByProduct(product);
+            var cons = ManagerFactory.Instance.GetManager<ConsignmentItemManager>().GetByProduct(product);
 
             return Content(
                 AjaxManager.SerializeAjaxAnswer(
@@ -42,7 +43,7 @@ namespace Shop.Web.Controllers
         [HttpGet]
         public ActionResult AjaxSelectConsignment(Guid consignmentId, Guid productId)
         {
-            var product = ProductManager.GetById(productId);
+            var product = ManagerFactory.Instance.GetManager<ProductManager>().GetById(productId) as ProductModel;
             if (product == null)
             {
                 return Content(AjaxManager.SerializeAjaxAnswer(AjaxManager.CreateErrorAjaxAnswer(null, "Товар не найден!")));

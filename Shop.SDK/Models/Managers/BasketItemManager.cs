@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Shop.SDK.Models.Managers
 {
-    public class BasketItemManager : BaseManager<BasketItemModel>
+    public class BasketItemManager : AbstractManager<BasketItemModel>
     {
     }
 }

@@ -30,11 +30,11 @@ namespace Shop.SDK.Models.Managers
         #endregion
 
         private bool _loaded;
-        List<BaseManager<IIdentifyed>> _managers;
+        IList<IManager> _managers;
 
         private ManagerFactory()
         {
-            _managers = new List<BaseManager<IIdentifyed>>();
+            _managers = new List<IManager>();
             _loaded = false;
         }
 
@@ -42,19 +42,48 @@ namespace Shop.SDK.Models.Managers
         {
             if (Instance._loaded) return;
 
-            Instance.RegisterManager(null);
-
             Instance._loaded = true;
         }
 
-        public void RegisterManager(BaseManager<IIdentifyed> manager)
+        public void RegisterManager(IManager manager)
         {
             _managers.Add(manager);
         }
 
-        public BaseManager<BaseEntity> GetManager(Type type)
+        /// <summary>
+        /// Возвращает менеджер сущностей по типу сущности, если менеджер для сущности не зарегистрирован, то возвращается null.
+        /// </summary>
+        /// <param name="entityType"></param>
+        /// <returns></returns>
+        public IManager GetManager(Type entityType)
         {
+            foreach (var item in _managers)
+            {
+                if (item.GetEntity == entityType)
+                {
+                    return item;
+                }
+            }
             return null;
+        }
+
+        /// <summary>
+        /// Вовзвращает менеджер сущностей по типу менеджера, если менеджер не зарегистрирован ранее, то происходит его регистрация
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetManager<T>() where T : IManager, new()
+        {
+            foreach (var item in _managers)
+            {
+                if (item.GetType() == typeof(T))
+                {
+                    return (T)item;
+                }
+            }
+            IManager manager = new T();
+            RegisterManager(manager);
+            return (T)manager;
         }
     }
 }

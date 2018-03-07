@@ -14,7 +14,7 @@ namespace Shop.Web.Controllers
         // GET: Product
         public ActionResult Index(Guid id)
         {
-            var product = ProductManager.GetById(id);
+            var product = ManagerFactory.Instance.GetManager<ProductManager>().GetById(id) as ProductModel;
             if (product == null)
             {
                 return RedirectToAction("Index", "Home");

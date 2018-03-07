@@ -9,9 +9,9 @@ using Shop.SDK.Core;
 
 namespace Shop.SDK.Models.Managers
 {
-    public abstract class UserManager : BaseManager<UserModel>
+    public class UserManager : AbstractManager<UserModel>
     {
-        public static UserModel GetUserByLoginPassword(string email, string password)
+        public UserModel GetUserByLoginPassword(string email, string password)
         {
             return NHibernateHelper.Instance.GetCurrentSession().CreateCriteria<UserModel>()
                 .Add(Expression.Eq("Email", email))
