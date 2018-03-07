@@ -1,0 +1,11 @@
+﻿@using Shop.SDK.Models
+@using Shop.SDK.Web.Extensions
+@model IEntity
+
+@{ 
+    var item = Model;
+}
+
+<div>
+    @Html.ListEntity(item.GetType())
+</div>

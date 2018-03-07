@@ -128,6 +128,7 @@
     <Compile Include="Controllers\BasketController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ConsignmentController.cs" />
+    <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Extension\HtmlHelper.cs" />
@@ -462,6 +463,7 @@
     <Content Include="Views\Shared\Navigation.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Shared\Filters.cshtml" />
+    <Content Include="Views\Entity\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

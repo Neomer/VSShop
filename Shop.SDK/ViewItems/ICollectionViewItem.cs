@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shop.SDK.ViewItems
 {
-    public interface IViewItem
+    public interface ICollectionViewItem<T> : IEnumerable<T>
     {
     }
 }

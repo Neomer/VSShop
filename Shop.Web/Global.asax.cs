@@ -21,6 +21,7 @@ namespace Shop.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             NHibernateHelper.Instance.OpenSession();
 
+            ManagerFactory.Instance.RegisterManager(new UserManager());
         }
     }
 }
