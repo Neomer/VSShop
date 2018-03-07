@@ -16,7 +16,7 @@ namespace Shop.SDK.ViewItems
         private Type _entityType = null;
         private IManager _manager = null;
 
-        EntityCollectionViewItem(Type entityType)
+        public EntityCollectionViewItem(Type entityType)
         {
             _entityType = entityType;
             _manager = ManagerFactory.Instance.GetManager(entityType);

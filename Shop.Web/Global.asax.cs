@@ -1,6 +1,7 @@
 ﻿using Shop.SDK.Core;
 using Shop.SDK.Models;
 using Shop.SDK.Models.Managers;
+using Shop.SDK.ViewItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace Shop.Web
             NHibernateHelper.Instance.OpenSession();
 
             ManagerFactory.Instance.RegisterManager(new UserManager());
+
+            var vi = new EntityCollectionViewItem(typeof(UserModel));
         }
     }
 }
